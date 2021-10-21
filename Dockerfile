@@ -11,9 +11,9 @@ ENV LANG C.UTF-8
 
 RUN mkdir /music-server
 WORKDIR /music-server
-# COPY Gemfile Gemfile
-# COPY Gemfile.lock Gemfile.lock
-# RUN bundle install
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install
 COPY . /music-server
 
 # Add a script to be executed every time the container starts.

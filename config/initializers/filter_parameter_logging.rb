@@ -1,6 +1,4 @@
-# Be sure to restart your server when you modify this file.
-
-# Configure sensitive parameters which will be filtered from the log file.
+# ログ出力すべきでないものはマスク
 Rails.application.config.filter_parameters += [
-  :passw, :secret, :token, :_key, :crypt, :salt, :certificate, :otp, :ssn
+  :password, :passw, :secret, :token, :_key, :crypt, :salt, :certificate, :otp, :ssn
 ]
