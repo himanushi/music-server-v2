@@ -1,0 +1,19 @@
+AllCops:
+  NewCops: enable
+  EnabledByDefault: true
+  Exclude:
+    - "vendor/**/*"
+    - "bin/**/*"
+    - "db/schema.rb"
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Copyright:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MissingElse:
+  Enabled: false
