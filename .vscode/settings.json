@@ -1,0 +1,12 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.rb$|\\.rake$|\\.ru$|Gemfile",
+        "cmd": "rubocop -A `echo '${file}' | sed 's@.*/music-server/@@'`"
+      }
+    ]
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
