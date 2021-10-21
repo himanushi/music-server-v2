@@ -15,6 +15,8 @@ gem 'puma', '~> 5.0'
 group :development, :test do
   # Ruby debug
   gem 'debug', '~> 1.3.0'
+  # 型検証
+  gem 'rbs_rails', '~> 0.9.0', require: false
 end
 
 # タイムゾーン
