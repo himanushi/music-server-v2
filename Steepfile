@@ -27,4 +27,7 @@ target :app do
   library 'actionview'
   library 'activerecord'
   library 'railties'
+  library 'openssl'
+  library 'net-http'
+  library 'uri'
 end

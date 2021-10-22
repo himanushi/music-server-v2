@@ -12,8 +12,8 @@ require 'action_controller/railtie'
 # require "action_mailer/railtie"
 # require "action_mailbox/engine"
 # require "action_text/engine"
-require 'action_view/railtie'
-require 'action_cable/engine'
+# require 'action_view/railtie'
+# require 'action_cable/engine'
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
@@ -25,6 +25,7 @@ module MusicServer
   class Application < ::Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults(6.1)
+    config.autoload_paths += %W[#{config.root}/lib]
 
     # Configuration for the application, engines, and railties goes here.
     #
