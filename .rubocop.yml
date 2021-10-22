@@ -9,11 +9,21 @@ AllCops:
 Style/AsciiComments:
   Enabled: false
 
+Style/ClassMethodsDefinitions:
+  Enabled: true
+  EnforcedStyle: self_class
+
 Style/Copyright:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
 
+Style/DocumentationMethod:
+  Enabled: false
+
 Style/MissingElse:
+  Enabled: false
+
+Style/StaticClass:
   Enabled: false
