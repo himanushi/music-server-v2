@@ -4,15 +4,6 @@ require 'net/http'
 
 module AppleMusic
   class Client
-    ENDPOINT = 'https://api.music.apple.com'
-    public_constant :ENDPOINT
-
-    VERSION = 'v1'
-    public_constant :VERSION
-
-    LOCALE = 'jp'
-    public_constant :LOCALE
-
     def initialize
       # @type var header: ::Hash[::String, untyped]
       header = {}
@@ -20,9 +11,12 @@ module AppleMusic
       @header = header
     end
 
-    def get(url, header = @header)
+    def get(url, params = {}, header = @header)
       uri = ::URI.parse(url)
+      uri.query = ::URI.encode_www_form(params)
       response = ::Net::HTTP.get_response(uri, header)
+      raise(::StandardError, "#{response.code}: #{response.message}") unless response.code.match?(/\A(2|3)/)
+
       ::JSON.parse(response.body)
     end
   end

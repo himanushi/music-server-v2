@@ -1,0 +1,232 @@
+module AppleMusic
+  class Api
+    ENDPOINT: ::String
+
+    RSS_ENDPOINT: ::String
+
+    LOCALE: ::String
+
+    DEFAULT_REPEAT: ::Integer
+
+    def self.apple_music_most_played: () -> ResponseFeed::feed_attributes
+
+    @client: ::AppleMusic::Client
+
+    @locale: ::String
+
+    @repeat: ::Integer
+
+    def get: (::String url, ?::Hash[::String, untyped] params) -> untyped
+
+    def get_album: (String apple_music_id) -> Response::albums
+
+    def get_artist_tracks: (String apple_music_id, ?::Integer repeat) -> Response::tracks
+
+    private
+
+    def compound: (::Hash[::String, untyped] body) -> untyped
+
+    def catalog_url: () -> ::String
+
+    # def get: (::String url, ?::Hash[::String, ::String] params) -> untyped
+
+    # def index: (?::Hash[untyped, untyped] params) -> untyped
+
+    # def get_artist: (String apple_music_id, ?::Hash[untyped, untyped] params) -> Response::artists
+
+    # def index_artists: (String name) -> Response::artists
+
+    # def get_artist_albums: (String apple_music_id, ?::Hash[untyped, untyped] params) -> Response::albums
+
+
+    # def get_album: (String apple_music_id, ?::Hash[untyped, untyped] params) -> Response::albums
+
+    # def get_track: (String apple_music_id, ?::Hash[untyped, untyped] params) -> Response::tracks
+
+    # def get_track_by_isrc: (String isrc) -> Response::tracks
+
+    # レスポンス専用に namespase 分けとく
+    module Response
+      type artist_attributes = {
+        "name" => ::String,
+        "genreNames" => ::Array[::String],
+        "url" => ::String
+      }
+
+      type artwork_attributes = {
+        "width" => ::Integer,
+        "height" => ::Integer,
+        "url" => ::String,
+        "bgColor" => ::String,
+        "textColor1" => ::String,
+        "textColor2" => ::String,
+        "textColor3" => ::String,
+        "textColor4" => ::String
+      }
+
+      type album_attributes = {
+        "artwork" => artwork_attributes,
+        "artistName" => ::String,
+        "isSingle" => bool,
+        "url" => ::String,
+        "isComplete" => bool,
+        "genreNames" => ::Array[::String],
+        "trackCount" => ::Integer,
+        "isMasteredForItunes" => bool,
+        "releaseDate" => ::String,
+        "name" => ::String,
+        "recordLabel" => ::String,
+        "copyright" => ::String,
+        # iTunes の場合はキー自体が存在しない
+        "playParams" => {
+          "id" => ::String,
+          "kind" => "album"
+        } | nil,
+        "isCompilation" => bool
+      }
+
+      type track_attributes = {
+        "previews" => ::Array[{
+          "url" => ::String
+        }],
+        "artwork" => artwork_attributes,
+        "artistName" => ::String,
+        "url" => ::String,
+        "discNumber" => ::Integer,
+        "genreNames" => ::Array[::String],
+        "durationInMillis" => ::Integer,
+        "releaseDate" => ::String,
+        "name" => ::String,
+        "isrc" => ::String,
+        "hasLyrics" => bool,
+        "albumName" => ::String,
+        # iTunes またはアルバム一括購入特典曲の場合はキー自体が存在しない
+        "playParams" => {
+          "id" => ::String,
+          "kind" => "song"
+        } | nil,
+        "trackNumber" => ::Integer,
+        "composerName" => ::String
+      }
+
+      type simple_artist = {
+        "id" => ::String,
+        "type" => "artists",
+        "href" => ::String,
+        "attributes" => artist_attributes
+      }
+
+      type artist = {
+        "relationships" => {
+          "albums" => {
+            "next" => ::String | nil,
+            "href" => ::String,
+            "data" => ::Array[simple_album]
+          }
+        }
+      } & simple_artist
+
+      type artists = {
+        "next" => ::String | nil,
+        "data" => Array[artist]
+      }
+
+      type simple_album = {
+        "id" => ::String,
+        "type" => "albums",
+        "href" => ::String,
+        "attributes" => album_attributes
+      }
+
+      type album = {
+        "id" => ::String,
+        "type" => "albums",
+        "href" => ::String,
+        "attributes" => album_attributes,
+        "relationships" => {
+          "tracks" => {
+            "next" => ::String | nil,
+            "href" => ::String,
+            "data" => ::Array[simple_track]
+          },
+          "artists" => {
+            "next" => ::String | nil,
+            "href" => ::String,
+            "data" => ::Array[{
+              "id" => ::String,
+              "type" => "artists",
+              "href" => ::String
+            }]
+          }
+        }
+      }
+
+      type albums = {
+        "next" => ::String | nil,
+        "data" => Array[album]
+      }
+
+      type simple_track = {
+        "id" => ::String,
+        "type" => "songs" | "music-videos",
+        "href" => ::String,
+        "attributes" => track_attributes
+      }
+
+      type track = {
+        "id" => ::String,
+        "type" => "songs" | "music-videos",
+        "href" => ::String,
+        "attributes" => track_attributes,
+        "relationships" => {
+          "artists" => {
+            "next" => ::String | nil,
+            "href" => ::String,
+            "data" => ::Array[simple_artist]
+          },
+          "albums" => {
+            "next" => ::String | nil,
+            "href" => ::String,
+            "data" => ::Array[simple_album]
+          }
+        }
+      }
+
+      type tracks = {
+        "next" => ::String | nil,
+        "data" => Array[track]
+      }
+    end
+
+    module ResponseFeed
+      type feed_attributes = {
+        "feed" => {
+          "title" => ::String,
+          "id" => ::String,
+          "author" => { "name" => "Apple", "url" => "https://www.apple.com/" },
+          "links" => ::Array[{ "self" => ::String }],
+          "copyright" => "Copyright © 2021 Apple Inc. All rights reserved.",
+          "country" => ::String,
+          "icon" => "https://www.apple.com/favicon.ico",
+          "updated" => ::String,
+          "results" => ::Array[{
+            "artistName" => ::String,
+            "id" => ::String,
+            "name" => ::String,
+            "releaseDate" => ::String,
+            "kind" => "album",
+            "artistId" => ::String,
+            "artistUrl" => ::String,
+            "artworkUrl100" => ::String,
+            "url" => ::String,
+            "genres" => ::Array[{
+              "genreId" => ::String,
+              "name" => ::String,
+              "url" => ::String,
+            }],
+          }],
+        }
+      }
+    end
+  end
+end

@@ -1,13 +1,7 @@
 module AppleMusic
   class Client
-    ENDPOINT: ::String
-
-    VERSION: ::String
-
-    LOCALE: ::String
-
     @header: ::Hash[::String, untyped]
 
-    def get: (::String url, ?::Hash[::String, untyped] header) -> untyped
+    def get: (::String url, ?::Hash[::String, untyped] params, ?::Hash[::String, untyped] header) -> untyped
   end
 end
