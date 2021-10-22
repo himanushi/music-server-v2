@@ -2,7 +2,7 @@
   "emeraldwalk.runonsave": {
     "commands": [
       {
-        "match": "\\.rb$|\\.rake$|\\.ru$|Gemfile",
+        "match": "\\.rb$|\\.rake$|\\.ru$|Gemfile|Steepfile",
         "cmd": "rubocop -A `echo '${file}' | sed 's@.*/music-server/@@'`"
       }
     ]
