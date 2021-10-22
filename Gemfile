@@ -11,6 +11,8 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'mysql2', '~> 0.5'
 # App server
 gem 'puma', '~> 5.0'
+# 暗号化 jwt
+gem 'jwt', '~> 2.3.0'
 
 group :development, :test do
   # Ruby debug
