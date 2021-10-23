@@ -1,0 +1,17 @@
+module TTID
+  REGEXP: ::Regexp
+
+  module InstanceMethods
+    attr_accessor id: ::String
+
+    def identify: () -> ::String
+
+    def unix_timestamp: () -> ::Integer
+
+    def table_id: () -> ::String
+
+    def hex_time: () -> ::String
+
+    def build_id: () -> ::String
+  end
+end
