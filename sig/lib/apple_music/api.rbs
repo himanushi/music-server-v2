@@ -18,11 +18,11 @@ module AppleMusic
 
     def get: (::String url, ?::Hash[::String, untyped] params) -> untyped
 
-    def get_artist: (::String apple_music_id) -> Response::artists
+    def get_artist: (::String apple_music_id) -> (Response::artists | Response::empty)
 
-    def get_artist_albums: (::String apple_music_id, ?::Integer repeat) -> Response::albums
+    def get_artist_albums: (::String apple_music_id, ?::Integer repeat) -> (Response::albums | Response::empty)
 
-    def get_artist_tracks: (::String apple_music_id, ?::Integer repeat) -> Response::tracks
+    def get_artist_tracks: (::String apple_music_id, ?::Integer repeat) -> (Response::tracks | Response::empty)
 
     def get_album: (::String apple_music_id) -> Response::albums
 
@@ -35,6 +35,8 @@ module AppleMusic
     def catalog_url: () -> ::String
 
     module Response
+      type empty = { _: nil }
+
       type artist_attributes = {
         "name" => ::String,
         "genreNames" => ::Array[::String],
