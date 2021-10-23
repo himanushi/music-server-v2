@@ -18,9 +18,15 @@ module AppleMusic
 
     def get: (::String url, ?::Hash[::String, untyped] params) -> untyped
 
-    def get_album: (String apple_music_id) -> Response::albums
+    def get_artist: (::String apple_music_id) -> Response::artists
 
-    def get_artist_tracks: (String apple_music_id, ?::Integer repeat) -> Response::tracks
+    def get_artist_albums: (::String apple_music_id, ?::Integer repeat) -> Response::albums
+
+    def get_artist_tracks: (::String apple_music_id, ?::Integer repeat) -> Response::tracks
+
+    def get_album: (::String apple_music_id) -> Response::albums
+
+    def get_track_by_isrc: (::String isrc) -> Response::tracks
 
     private
 
@@ -28,24 +34,6 @@ module AppleMusic
 
     def catalog_url: () -> ::String
 
-    # def get: (::String url, ?::Hash[::String, ::String] params) -> untyped
-
-    # def index: (?::Hash[untyped, untyped] params) -> untyped
-
-    # def get_artist: (String apple_music_id, ?::Hash[untyped, untyped] params) -> Response::artists
-
-    # def index_artists: (String name) -> Response::artists
-
-    # def get_artist_albums: (String apple_music_id, ?::Hash[untyped, untyped] params) -> Response::albums
-
-
-    # def get_album: (String apple_music_id, ?::Hash[untyped, untyped] params) -> Response::albums
-
-    # def get_track: (String apple_music_id, ?::Hash[untyped, untyped] params) -> Response::tracks
-
-    # def get_track_by_isrc: (String isrc) -> Response::tracks
-
-    # レスポンス専用に namespase 分けとく
     module Response
       type artist_attributes = {
         "name" => ::String,
@@ -76,6 +64,7 @@ module AppleMusic
         "releaseDate" => ::String,
         "name" => ::String,
         "recordLabel" => ::String,
+        "upc" => ::String,
         "copyright" => ::String,
         # iTunes の場合はキー自体が存在しない
         "playParams" => {
@@ -106,7 +95,7 @@ module AppleMusic
           "kind" => "song"
         } | nil,
         "trackNumber" => ::Integer,
-        "composerName" => ::String
+        "composerName" => ::String | nil
       }
 
       type simple_artist = {
@@ -117,6 +106,10 @@ module AppleMusic
       }
 
       type artist = {
+        "id" => ::String,
+        "type" => "artists",
+        "href" => ::String,
+        "attributes" => artist_attributes,
         "relationships" => {
           "albums" => {
             "next" => ::String | nil,
@@ -124,7 +117,7 @@ module AppleMusic
             "data" => ::Array[simple_album]
           }
         }
-      } & simple_artist
+      }
 
       type artists = {
         "next" => ::String | nil,

@@ -11,7 +11,7 @@ module AppleMusic
     LOCALE = 'jp'
     public_constant :LOCALE
 
-    DEFAULT_REPEAT = 2
+    DEFAULT_REPEAT = 5
     public_constant :DEFAULT_REPEAT
 
     class << self
@@ -41,7 +41,23 @@ module AppleMusic
     def get_artist(apple_music_id)
       get("#{catalog_url}/artists/#{apple_music_id}")
     rescue ::StandardError
-      # アーティストを参照できない場合
+      # アーティストを参照できない場合がある
+      {}
+    end
+
+    def get_artist_albums(apple_music_id, repeat = nil)
+      @repeat = repeat if repeat
+      get("#{catalog_url}/artists/#{apple_music_id}/albums")
+    rescue ::StandardError
+      # アーティストを参照できない場合がある
+      {}
+    end
+
+    def get_artist_tracks(apple_music_id, repeat = nil)
+      @repeat = repeat if repeat
+      get("#{catalog_url}/artists/#{apple_music_id}/songs")
+    rescue ::StandardError
+      # アーティストを参照できない場合がある
       {}
     end
 
@@ -49,9 +65,11 @@ module AppleMusic
       get("#{catalog_url}/albums/#{apple_music_id}")
     end
 
-    def get_artist_tracks(apple_music_id, repeat = nil)
-      @repeat = repeat if repeat
-      get("#{catalog_url}/artists/#{apple_music_id}/songs")
+    def get_track_by_isrc(isrc)
+      # @type var params: ::Hash[::String, untyped]
+      params = {}
+      params['filter[isrc]'] = isrc
+      get("#{catalog_url}/songs", params)
     end
 
     private
