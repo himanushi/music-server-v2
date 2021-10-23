@@ -4,20 +4,20 @@ default: &default
   charset: utf8mb4
   collation: utf8mb4_general_ci
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch('MYSQL_USERNAME') { 'root' } %>
-  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
-  host: <%= ENV.fetch('MYSQL_HOST') { 'db' } %>
+  host: <%= ENV['SERVER_DATABASE_HOST'] %>
+  username: <%= ENV['SERVER_DATABASE_USER_NAME_DEVELOP'] %>
+  password: <%= ENV['SERVER_DATABASE_USER_PASSWORD_DEVELOP'] %>
 
 development:
   <<: *default
-  database: music_server_development
+  database: <%= ENV['SERVER_DATABASE_NAME_DEVELOP'] %>
 
 test:
   <<: *default
-  database: music_server_test
+  database: <%= ENV['SERVER_DATABASE_NAME_TEST'] %>
 
 production:
   <<: *default
-  database: music_server_production
+  database: <%= ENV['SERVER_DATABASE_NAME_PRODUCTION'] %>
   username: <%= ENV['SERVER_DATABASE_USER_NAME_PRODUCTION'] %>
   password: <%= ENV['SERVER_DATABASE_USER_PASSWORD_PRODUCTION'] %>
