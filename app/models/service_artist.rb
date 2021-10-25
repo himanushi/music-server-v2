@@ -2,4 +2,6 @@
 
 class ServiceArtist < ::ApplicationRecord
   def table_id() = 'sar'
+
+  belongs_to :artist
 end

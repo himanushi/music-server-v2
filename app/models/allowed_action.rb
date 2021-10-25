@@ -2,4 +2,6 @@
 
 class AllowedAction < ::ApplicationRecord
   def table_id() = 'ald'
+
+  belongs_to :role
 end
