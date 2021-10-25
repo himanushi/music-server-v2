@@ -23,10 +23,17 @@ class Album < ::ApplicationRecord
       attrs = hash_by_service_id(service_id)
       raise(::StandardError, 'hash_by_service_id が nil') unless attrs
 
-      # @type var new_instance: ::Album
-      new_instance = new(attrs)
-      new_instance.save!
-      new_instance
+      album = find_by(service_id: service_id)
+
+      if album
+        album.update!(attrs)
+        album
+      else
+        # @type var new_instance: ::Album
+        new_instance = new(attrs)
+        new_instance.save!
+        new_instance
+      end
     end
 
     def hash_by_service_id(service_id)
