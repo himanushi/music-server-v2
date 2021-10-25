@@ -20,7 +20,7 @@ class Album < ::ApplicationRecord
     end
 
     def create_by_service_id!(service_id)
-      attrs = hash_by_service_id(service_id)
+      attrs = attributes_by_service_id(service_id)
       raise(::StandardError, 'hash_by_service_id が nil') unless attrs
 
       album = find_by(service_id: service_id)
@@ -36,7 +36,7 @@ class Album < ::ApplicationRecord
       end
     end
 
-    def hash_by_service_id(service_id)
+    def attributes_by_service_id(service_id)
       result = ::AppleMusic::Api.new.get_album(service_id)
       data = result['data'].first
       return unless data

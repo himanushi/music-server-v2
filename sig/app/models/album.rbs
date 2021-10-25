@@ -1,5 +1,5 @@
 class Album < ::ApplicationRecord
-  type album_hash = {
+  type album_attributes = {
     service_id: ::String,
     name: ::String,
     playable: bool,
@@ -17,9 +17,9 @@ class Album < ::ApplicationRecord
 
   def self.create_by_service_id!: (::String service_id) -> ::Album
 
-  def self.hash_by_service_id: (::String service_id) -> album_hash?
+  def self.attributes_by_service_id: (::String service_id) -> album_attributes?
 
-  def self.to_attributes: (::AppleMusic::Api::Response::album data) -> album_hash?
+  def self.to_attributes: (::AppleMusic::Api::Response::album data) -> album_attributes?
 
   def self.release_date_to_datetime: (::String release_date) -> ::ActiveSupport::TimeWithZone
 end
