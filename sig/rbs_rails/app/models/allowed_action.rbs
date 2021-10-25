@@ -86,6 +86,13 @@ class AllowedAction < ApplicationRecord
   def restore_name!: () -> void
   def clear_name_change: () -> void
 
+  def role: () -> Role
+  def role=: (Role?) -> Role?
+  def reload_role: () -> Role?
+  def build_role: (untyped) -> Role
+  def create_role: (untyped) -> Role
+  def create_role!: (untyped) -> Role
+
   module GeneratedRelationMethods
   end
 

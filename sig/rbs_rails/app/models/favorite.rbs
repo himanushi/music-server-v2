@@ -103,6 +103,16 @@ class Favorite < ApplicationRecord
   def restore_favorable_type!: () -> void
   def clear_favorable_type_change: () -> void
 
+  def favorable: () -> untyped
+  def favorable=: (untyped?) -> untyped?
+  def reload_favorable: () -> untyped?
+  def user: () -> User
+  def user=: (User?) -> User?
+  def reload_user: () -> User?
+  def build_user: (untyped) -> User
+  def create_user: (untyped) -> User
+  def create_user!: (untyped) -> User
+
   module GeneratedRelationMethods
   end
 

@@ -86,6 +86,19 @@ class ArtistHasAlbum < ApplicationRecord
   def restore_album_id!: () -> void
   def clear_album_id_change: () -> void
 
+  def artist: () -> Artist
+  def artist=: (Artist?) -> Artist?
+  def reload_artist: () -> Artist?
+  def build_artist: (untyped) -> Artist
+  def create_artist: (untyped) -> Artist
+  def create_artist!: (untyped) -> Artist
+  def album: () -> Album
+  def album=: (Album?) -> Album?
+  def reload_album: () -> Album?
+  def build_album: (untyped) -> Album
+  def create_album: (untyped) -> Album
+  def create_album!: (untyped) -> Album
+
   module GeneratedRelationMethods
   end
 

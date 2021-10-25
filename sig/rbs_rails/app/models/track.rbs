@@ -103,6 +103,37 @@ class Track < ApplicationRecord
   def restore_pv!: () -> void
   def clear_pv_change: () -> void
 
+  def artist_has_tracks: () -> ArtistHasTrack::ActiveRecord_Associations_CollectionProxy
+  def artist_has_tracks=: (ArtistHasTrack::ActiveRecord_Associations_CollectionProxy | Array[ArtistHasTrack]) -> (ArtistHasTrack::ActiveRecord_Associations_CollectionProxy | Array[ArtistHasTrack])
+  def artist_has_track_ids: () -> Array[Integer]
+  def artist_has_track_ids=: (Array[Integer]) -> Array[Integer]
+  def artists: () -> Artist::ActiveRecord_Associations_CollectionProxy
+  def artists=: (Artist::ActiveRecord_Associations_CollectionProxy | Array[Artist]) -> (Artist::ActiveRecord_Associations_CollectionProxy | Array[Artist])
+  def artist_ids: () -> Array[Integer]
+  def artist_ids=: (Array[Integer]) -> Array[Integer]
+  def album_tracks: () -> AlbumTrack::ActiveRecord_Associations_CollectionProxy
+  def album_tracks=: (AlbumTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumTrack]) -> (AlbumTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumTrack])
+  def album_track_ids: () -> Array[Integer]
+  def album_track_ids=: (Array[Integer]) -> Array[Integer]
+  def albums: () -> Album::ActiveRecord_Associations_CollectionProxy
+  def albums=: (Album::ActiveRecord_Associations_CollectionProxy | Array[Album]) -> (Album::ActiveRecord_Associations_CollectionProxy | Array[Album])
+  def album_ids: () -> Array[Integer]
+  def album_ids=: (Array[Integer]) -> Array[Integer]
+  def playlist_items: () -> PlaylistItem::ActiveRecord_Associations_CollectionProxy
+  def playlist_items=: (PlaylistItem::ActiveRecord_Associations_CollectionProxy | Array[PlaylistItem]) -> (PlaylistItem::ActiveRecord_Associations_CollectionProxy | Array[PlaylistItem])
+  def playlist_item_ids: () -> Array[Integer]
+  def playlist_item_ids=: (Array[Integer]) -> Array[Integer]
+  def favorites: () -> Favorite::ActiveRecord_Associations_CollectionProxy
+  def favorites=: (Favorite::ActiveRecord_Associations_CollectionProxy | Array[Favorite]) -> (Favorite::ActiveRecord_Associations_CollectionProxy | Array[Favorite])
+  def favorite_ids: () -> Array[Integer]
+  def favorite_ids=: (Array[Integer]) -> Array[Integer]
+  def playlist: () -> Playlist?
+  def playlist=: (Playlist?) -> Playlist?
+  def build_playlist: (untyped) -> Playlist
+  def create_playlist: (untyped) -> Playlist
+  def create_playlist!: (untyped) -> Playlist
+  def reload_playlist: () -> Playlist?
+
   module GeneratedRelationMethods
   end
 

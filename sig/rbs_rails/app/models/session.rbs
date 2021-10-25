@@ -86,6 +86,13 @@ class Session < ApplicationRecord
   def restore_token!: () -> void
   def clear_token_change: () -> void
 
+  def user: () -> User
+  def user=: (User?) -> User?
+  def reload_user: () -> User?
+  def build_user: (untyped) -> User
+  def create_user: (untyped) -> User
+  def create_user!: (untyped) -> User
+
   module GeneratedRelationMethods
   end
 

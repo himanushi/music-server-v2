@@ -155,6 +155,18 @@ class User < ApplicationRecord
   def restore_password_digest!: () -> void
   def clear_password_digest_change: () -> void
 
+  def sessions: () -> Session::ActiveRecord_Associations_CollectionProxy
+  def sessions=: (Session::ActiveRecord_Associations_CollectionProxy | Array[Session]) -> (Session::ActiveRecord_Associations_CollectionProxy | Array[Session])
+  def session_ids: () -> Array[Integer]
+  def session_ids=: (Array[Integer]) -> Array[Integer]
+
+  def role: () -> Role
+  def role=: (Role?) -> Role?
+  def reload_role: () -> Role?
+  def build_role: (untyped) -> Role
+  def create_role: (untyped) -> Role
+  def create_role!: (untyped) -> Role
+
   module GeneratedRelationMethods
   end
 

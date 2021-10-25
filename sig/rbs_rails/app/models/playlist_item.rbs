@@ -103,6 +103,19 @@ class PlaylistItem < ApplicationRecord
   def restore_track_number!: () -> void
   def clear_track_number_change: () -> void
 
+  def playlist: () -> Playlist
+  def playlist=: (Playlist?) -> Playlist?
+  def reload_playlist: () -> Playlist?
+  def build_playlist: (untyped) -> Playlist
+  def create_playlist: (untyped) -> Playlist
+  def create_playlist!: (untyped) -> Playlist
+  def track: () -> Track
+  def track=: (Track?) -> Track?
+  def reload_track: () -> Track?
+  def build_track: (untyped) -> Track
+  def create_track: (untyped) -> Track
+  def create_track!: (untyped) -> Track
+
   module GeneratedRelationMethods
   end
 

@@ -86,6 +86,15 @@ class Role < ApplicationRecord
   def restore_description!: () -> void
   def clear_description_change: () -> void
 
+  def users: () -> User::ActiveRecord_Associations_CollectionProxy
+  def users=: (User::ActiveRecord_Associations_CollectionProxy | Array[User]) -> (User::ActiveRecord_Associations_CollectionProxy | Array[User])
+  def user_ids: () -> Array[Integer]
+  def user_ids=: (Array[Integer]) -> Array[Integer]
+  def allowed_actions: () -> AllowedAction::ActiveRecord_Associations_CollectionProxy
+  def allowed_actions=: (AllowedAction::ActiveRecord_Associations_CollectionProxy | Array[AllowedAction]) -> (AllowedAction::ActiveRecord_Associations_CollectionProxy | Array[AllowedAction])
+  def allowed_action_ids: () -> Array[Integer]
+  def allowed_action_ids=: (Array[Integer]) -> Array[Integer]
+
   module GeneratedRelationMethods
   end
 

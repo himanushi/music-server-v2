@@ -292,6 +292,19 @@ class AlbumTrack < ApplicationRecord
   def restore_artwork_height!: () -> void
   def clear_artwork_height_change: () -> void
 
+  def album: () -> Album
+  def album=: (Album?) -> Album?
+  def reload_album: () -> Album?
+  def build_album: (untyped) -> Album
+  def create_album: (untyped) -> Album
+  def create_album!: (untyped) -> Album
+  def track: () -> Track
+  def track=: (Track?) -> Track?
+  def reload_track: () -> Track?
+  def build_track: (untyped) -> Track
+  def create_track: (untyped) -> Track
+  def create_track!: (untyped) -> Track
+
   module GeneratedRelationMethods
   end
 
