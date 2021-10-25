@@ -16,7 +16,11 @@ module AppleMusic
 
     @repeat: ::Integer
 
-    def get: (::String url, ?::Hash[::String, untyped] params) -> untyped
+    def get: (::String url, ?::Hash[::String, untyped]? params) -> untyped
+
+    def index: (::String url, ?::Hash[::String, untyped] params) -> untyped
+
+    def index_artists_by_name: (::String name, ?::Integer repeat) -> (Response::artists | Response::empty)
 
     def get_artist: (::String apple_music_id) -> (Response::artists | Response::empty)
 
@@ -31,6 +35,8 @@ module AppleMusic
     private
 
     def compound: (::Hash[::String, untyped] body) -> untyped
+
+    def compound_index: (::Hash[::String, untyped] body) -> untyped
 
     def catalog_url: () -> ::String
 
@@ -190,6 +196,18 @@ module AppleMusic
       type tracks = {
         "next" => ::String | nil,
         "data" => Array[track]
+      }
+
+      type index_results = {
+        "results" => {
+          "artists" => artists
+        },
+        "meta" => {
+          "results" => {
+            "order" => ["artists"],
+            "rawOrder" => ["artists"]
+          }
+        }
       }
     end
 
