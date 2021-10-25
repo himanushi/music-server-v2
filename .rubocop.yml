@@ -27,3 +27,6 @@ Style/MissingElse:
 
 Style/StaticClass:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 15
