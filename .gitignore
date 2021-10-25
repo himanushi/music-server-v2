@@ -9,6 +9,7 @@
 
 # Ignore bundler config.
 /.bundle
+/.gem_rbs_collection/
 
 # Ignore all logfiles and tempfiles.
 /log/*
