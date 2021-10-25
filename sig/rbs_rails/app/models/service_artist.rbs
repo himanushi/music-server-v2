@@ -1,5 +1,5 @@
-class Artist < ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[Artist, ActiveRecord_Relation, String]
+class ServiceArtist < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[ServiceArtist, ActiveRecord_Relation, String]
 
   attr_accessor id(): String
   def id_changed?: () -> bool
@@ -52,6 +52,40 @@ class Artist < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
+  attr_accessor artist_id(): String
+  def artist_id_changed?: () -> bool
+  def artist_id_change: () -> [ String?, String? ]
+  def artist_id_will_change!: () -> void
+  def artist_id_was: () -> String?
+  def artist_id_previously_changed?: () -> bool
+  def artist_id_previous_change: () -> Array[String?]?
+  def artist_id_previously_was: () -> String?
+  def artist_id_before_last_save: () -> String?
+  def artist_id_change_to_be_saved: () -> Array[String?]?
+  def artist_id_in_database: () -> String?
+  def saved_change_to_artist_id: () -> Array[String?]?
+  def saved_change_to_artist_id?: () -> bool
+  def will_save_change_to_artist_id?: () -> bool
+  def restore_artist_id!: () -> void
+  def clear_artist_id_change: () -> void
+
+  attr_accessor service_id(): String
+  def service_id_changed?: () -> bool
+  def service_id_change: () -> [ String?, String? ]
+  def service_id_will_change!: () -> void
+  def service_id_was: () -> String?
+  def service_id_previously_changed?: () -> bool
+  def service_id_previous_change: () -> Array[String?]?
+  def service_id_previously_was: () -> String?
+  def service_id_before_last_save: () -> String?
+  def service_id_change_to_be_saved: () -> Array[String?]?
+  def service_id_in_database: () -> String?
+  def saved_change_to_service_id: () -> Array[String?]?
+  def saved_change_to_service_id?: () -> bool
+  def will_save_change_to_service_id?: () -> bool
+  def restore_service_id!: () -> void
+  def clear_service_id_change: () -> void
+
   attr_accessor name(): String
   def name_changed?: () -> bool
   def name_change: () -> [ String?, String? ]
@@ -69,68 +103,17 @@ class Artist < ApplicationRecord
   def restore_name!: () -> void
   def clear_name_change: () -> void
 
-  attr_accessor status(): Integer
-  def status_changed?: () -> bool
-  def status_change: () -> [ Integer?, Integer? ]
-  def status_will_change!: () -> void
-  def status_was: () -> Integer?
-  def status_previously_changed?: () -> bool
-  def status_previous_change: () -> Array[Integer?]?
-  def status_previously_was: () -> Integer?
-  def status_before_last_save: () -> Integer?
-  def status_change_to_be_saved: () -> Array[Integer?]?
-  def status_in_database: () -> Integer?
-  def saved_change_to_status: () -> Array[Integer?]?
-  def saved_change_to_status?: () -> bool
-  def will_save_change_to_status?: () -> bool
-  def restore_status!: () -> void
-  def clear_status_change: () -> void
-
-  attr_accessor popularity(): Integer
-  def popularity_changed?: () -> bool
-  def popularity_change: () -> [ Integer?, Integer? ]
-  def popularity_will_change!: () -> void
-  def popularity_was: () -> Integer?
-  def popularity_previously_changed?: () -> bool
-  def popularity_previous_change: () -> Array[Integer?]?
-  def popularity_previously_was: () -> Integer?
-  def popularity_before_last_save: () -> Integer?
-  def popularity_change_to_be_saved: () -> Array[Integer?]?
-  def popularity_in_database: () -> Integer?
-  def saved_change_to_popularity: () -> Array[Integer?]?
-  def saved_change_to_popularity?: () -> bool
-  def will_save_change_to_popularity?: () -> bool
-  def restore_popularity!: () -> void
-  def clear_popularity_change: () -> void
-
-  attr_accessor pv(): Integer
-  def pv_changed?: () -> bool
-  def pv_change: () -> [ Integer?, Integer? ]
-  def pv_will_change!: () -> void
-  def pv_was: () -> Integer?
-  def pv_previously_changed?: () -> bool
-  def pv_previous_change: () -> Array[Integer?]?
-  def pv_previously_was: () -> Integer?
-  def pv_before_last_save: () -> Integer?
-  def pv_change_to_be_saved: () -> Array[Integer?]?
-  def pv_in_database: () -> Integer?
-  def saved_change_to_pv: () -> Array[Integer?]?
-  def saved_change_to_pv?: () -> bool
-  def will_save_change_to_pv?: () -> bool
-  def restore_pv!: () -> void
-  def clear_pv_change: () -> void
-
   module GeneratedRelationMethods
   end
 
   class ActiveRecord_Relation < ActiveRecord::Relation
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Artist, String]
-    include Enumerable[Artist]
+    include _ActiveRecord_Relation[ServiceArtist, String]
+    include Enumerable[ServiceArtist]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Artist, String]
+    include _ActiveRecord_Relation[ServiceArtist, String]
   end
 end

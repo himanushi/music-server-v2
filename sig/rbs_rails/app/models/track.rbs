@@ -1,5 +1,5 @@
-class Artist < ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[Artist, ActiveRecord_Relation, String]
+class Track < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Track, ActiveRecord_Relation, String]
 
   attr_accessor id(): String
   def id_changed?: () -> bool
@@ -52,39 +52,22 @@ class Artist < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
-  attr_accessor name(): String
-  def name_changed?: () -> bool
-  def name_change: () -> [ String?, String? ]
-  def name_will_change!: () -> void
-  def name_was: () -> String?
-  def name_previously_changed?: () -> bool
-  def name_previous_change: () -> Array[String?]?
-  def name_previously_was: () -> String?
-  def name_before_last_save: () -> String?
-  def name_change_to_be_saved: () -> Array[String?]?
-  def name_in_database: () -> String?
-  def saved_change_to_name: () -> Array[String?]?
-  def saved_change_to_name?: () -> bool
-  def will_save_change_to_name?: () -> bool
-  def restore_name!: () -> void
-  def clear_name_change: () -> void
-
-  attr_accessor status(): Integer
-  def status_changed?: () -> bool
-  def status_change: () -> [ Integer?, Integer? ]
-  def status_will_change!: () -> void
-  def status_was: () -> Integer?
-  def status_previously_changed?: () -> bool
-  def status_previous_change: () -> Array[Integer?]?
-  def status_previously_was: () -> Integer?
-  def status_before_last_save: () -> Integer?
-  def status_change_to_be_saved: () -> Array[Integer?]?
-  def status_in_database: () -> Integer?
-  def saved_change_to_status: () -> Array[Integer?]?
-  def saved_change_to_status?: () -> bool
-  def will_save_change_to_status?: () -> bool
-  def restore_status!: () -> void
-  def clear_status_change: () -> void
+  attr_accessor isrc(): String
+  def isrc_changed?: () -> bool
+  def isrc_change: () -> [ String?, String? ]
+  def isrc_will_change!: () -> void
+  def isrc_was: () -> String?
+  def isrc_previously_changed?: () -> bool
+  def isrc_previous_change: () -> Array[String?]?
+  def isrc_previously_was: () -> String?
+  def isrc_before_last_save: () -> String?
+  def isrc_change_to_be_saved: () -> Array[String?]?
+  def isrc_in_database: () -> String?
+  def saved_change_to_isrc: () -> Array[String?]?
+  def saved_change_to_isrc?: () -> bool
+  def will_save_change_to_isrc?: () -> bool
+  def restore_isrc!: () -> void
+  def clear_isrc_change: () -> void
 
   attr_accessor popularity(): Integer
   def popularity_changed?: () -> bool
@@ -125,12 +108,12 @@ class Artist < ApplicationRecord
 
   class ActiveRecord_Relation < ActiveRecord::Relation
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Artist, String]
-    include Enumerable[Artist]
+    include _ActiveRecord_Relation[Track, String]
+    include Enumerable[Track]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Artist, String]
+    include _ActiveRecord_Relation[Track, String]
   end
 end

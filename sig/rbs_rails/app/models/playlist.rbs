@@ -1,5 +1,5 @@
-class Artist < ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[Artist, ActiveRecord_Relation, String]
+class Playlist < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[Playlist, ActiveRecord_Relation, String]
 
   attr_accessor id(): String
   def id_changed?: () -> bool
@@ -52,6 +52,40 @@ class Artist < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
+  attr_accessor track_id(): String?
+  def track_id_changed?: () -> bool
+  def track_id_change: () -> [ String?, String? ]
+  def track_id_will_change!: () -> void
+  def track_id_was: () -> String?
+  def track_id_previously_changed?: () -> bool
+  def track_id_previous_change: () -> Array[String?]?
+  def track_id_previously_was: () -> String?
+  def track_id_before_last_save: () -> String?
+  def track_id_change_to_be_saved: () -> Array[String?]?
+  def track_id_in_database: () -> String?
+  def saved_change_to_track_id: () -> Array[String?]?
+  def saved_change_to_track_id?: () -> bool
+  def will_save_change_to_track_id?: () -> bool
+  def restore_track_id!: () -> void
+  def clear_track_id_change: () -> void
+
+  attr_accessor user_id(): String
+  def user_id_changed?: () -> bool
+  def user_id_change: () -> [ String?, String? ]
+  def user_id_will_change!: () -> void
+  def user_id_was: () -> String?
+  def user_id_previously_changed?: () -> bool
+  def user_id_previous_change: () -> Array[String?]?
+  def user_id_previously_was: () -> String?
+  def user_id_before_last_save: () -> String?
+  def user_id_change_to_be_saved: () -> Array[String?]?
+  def user_id_in_database: () -> String?
+  def saved_change_to_user_id: () -> Array[String?]?
+  def saved_change_to_user_id?: () -> bool
+  def will_save_change_to_user_id?: () -> bool
+  def restore_user_id!: () -> void
+  def clear_user_id_change: () -> void
+
   attr_accessor name(): String
   def name_changed?: () -> bool
   def name_change: () -> [ String?, String? ]
@@ -69,22 +103,39 @@ class Artist < ApplicationRecord
   def restore_name!: () -> void
   def clear_name_change: () -> void
 
-  attr_accessor status(): Integer
-  def status_changed?: () -> bool
-  def status_change: () -> [ Integer?, Integer? ]
-  def status_will_change!: () -> void
-  def status_was: () -> Integer?
-  def status_previously_changed?: () -> bool
-  def status_previous_change: () -> Array[Integer?]?
-  def status_previously_was: () -> Integer?
-  def status_before_last_save: () -> Integer?
-  def status_change_to_be_saved: () -> Array[Integer?]?
-  def status_in_database: () -> Integer?
-  def saved_change_to_status: () -> Array[Integer?]?
-  def saved_change_to_status?: () -> bool
-  def will_save_change_to_status?: () -> bool
-  def restore_status!: () -> void
-  def clear_status_change: () -> void
+  attr_accessor description(): String?
+  def description_changed?: () -> bool
+  def description_change: () -> [ String?, String? ]
+  def description_will_change!: () -> void
+  def description_was: () -> String?
+  def description_previously_changed?: () -> bool
+  def description_previous_change: () -> Array[String?]?
+  def description_previously_was: () -> String?
+  def description_before_last_save: () -> String?
+  def description_change_to_be_saved: () -> Array[String?]?
+  def description_in_database: () -> String?
+  def saved_change_to_description: () -> Array[String?]?
+  def saved_change_to_description?: () -> bool
+  def will_save_change_to_description?: () -> bool
+  def restore_description!: () -> void
+  def clear_description_change: () -> void
+
+  attr_accessor public_type(): Integer
+  def public_type_changed?: () -> bool
+  def public_type_change: () -> [ Integer?, Integer? ]
+  def public_type_will_change!: () -> void
+  def public_type_was: () -> Integer?
+  def public_type_previously_changed?: () -> bool
+  def public_type_previous_change: () -> Array[Integer?]?
+  def public_type_previously_was: () -> Integer?
+  def public_type_before_last_save: () -> Integer?
+  def public_type_change_to_be_saved: () -> Array[Integer?]?
+  def public_type_in_database: () -> Integer?
+  def saved_change_to_public_type: () -> Array[Integer?]?
+  def saved_change_to_public_type?: () -> bool
+  def will_save_change_to_public_type?: () -> bool
+  def restore_public_type!: () -> void
+  def clear_public_type_change: () -> void
 
   attr_accessor popularity(): Integer
   def popularity_changed?: () -> bool
@@ -125,12 +176,12 @@ class Artist < ApplicationRecord
 
   class ActiveRecord_Relation < ActiveRecord::Relation
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Artist, String]
-    include Enumerable[Artist]
+    include _ActiveRecord_Relation[Playlist, String]
+    include Enumerable[Playlist]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Artist, String]
+    include _ActiveRecord_Relation[Playlist, String]
   end
 end

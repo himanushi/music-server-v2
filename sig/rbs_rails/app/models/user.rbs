@@ -1,5 +1,5 @@
-class Artist < ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[Artist, ActiveRecord_Relation, String]
+class User < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[User, ActiveRecord_Relation, String]
 
   attr_accessor id(): String
   def id_changed?: () -> bool
@@ -52,6 +52,23 @@ class Artist < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
+  attr_accessor role_id(): String
+  def role_id_changed?: () -> bool
+  def role_id_change: () -> [ String?, String? ]
+  def role_id_will_change!: () -> void
+  def role_id_was: () -> String?
+  def role_id_previously_changed?: () -> bool
+  def role_id_previous_change: () -> Array[String?]?
+  def role_id_previously_was: () -> String?
+  def role_id_before_last_save: () -> String?
+  def role_id_change_to_be_saved: () -> Array[String?]?
+  def role_id_in_database: () -> String?
+  def saved_change_to_role_id: () -> Array[String?]?
+  def saved_change_to_role_id?: () -> bool
+  def will_save_change_to_role_id?: () -> bool
+  def restore_role_id!: () -> void
+  def clear_role_id_change: () -> void
+
   attr_accessor name(): String
   def name_changed?: () -> bool
   def name_change: () -> [ String?, String? ]
@@ -68,6 +85,23 @@ class Artist < ApplicationRecord
   def will_save_change_to_name?: () -> bool
   def restore_name!: () -> void
   def clear_name_change: () -> void
+
+  attr_accessor username(): String
+  def username_changed?: () -> bool
+  def username_change: () -> [ String?, String? ]
+  def username_will_change!: () -> void
+  def username_was: () -> String?
+  def username_previously_changed?: () -> bool
+  def username_previous_change: () -> Array[String?]?
+  def username_previously_was: () -> String?
+  def username_before_last_save: () -> String?
+  def username_change_to_be_saved: () -> Array[String?]?
+  def username_in_database: () -> String?
+  def saved_change_to_username: () -> Array[String?]?
+  def saved_change_to_username?: () -> bool
+  def will_save_change_to_username?: () -> bool
+  def restore_username!: () -> void
+  def clear_username_change: () -> void
 
   attr_accessor status(): Integer
   def status_changed?: () -> bool
@@ -86,51 +120,52 @@ class Artist < ApplicationRecord
   def restore_status!: () -> void
   def clear_status_change: () -> void
 
-  attr_accessor popularity(): Integer
-  def popularity_changed?: () -> bool
-  def popularity_change: () -> [ Integer?, Integer? ]
-  def popularity_will_change!: () -> void
-  def popularity_was: () -> Integer?
-  def popularity_previously_changed?: () -> bool
-  def popularity_previous_change: () -> Array[Integer?]?
-  def popularity_previously_was: () -> Integer?
-  def popularity_before_last_save: () -> Integer?
-  def popularity_change_to_be_saved: () -> Array[Integer?]?
-  def popularity_in_database: () -> Integer?
-  def saved_change_to_popularity: () -> Array[Integer?]?
-  def saved_change_to_popularity?: () -> bool
-  def will_save_change_to_popularity?: () -> bool
-  def restore_popularity!: () -> void
-  def clear_popularity_change: () -> void
+  attr_accessor registered(): bool
+  def registered_changed?: () -> bool
+  def registered_change: () -> [ bool?, bool? ]
+  def registered_will_change!: () -> void
+  def registered_was: () -> bool?
+  def registered_previously_changed?: () -> bool
+  def registered_previous_change: () -> Array[bool?]?
+  def registered_previously_was: () -> bool?
+  def registered_before_last_save: () -> bool?
+  def registered_change_to_be_saved: () -> Array[bool?]?
+  def registered_in_database: () -> bool?
+  def saved_change_to_registered: () -> Array[bool?]?
+  def saved_change_to_registered?: () -> bool
+  def will_save_change_to_registered?: () -> bool
+  def restore_registered!: () -> void
+  def clear_registered_change: () -> void
+  attr_accessor registered?(): bool
 
-  attr_accessor pv(): Integer
-  def pv_changed?: () -> bool
-  def pv_change: () -> [ Integer?, Integer? ]
-  def pv_will_change!: () -> void
-  def pv_was: () -> Integer?
-  def pv_previously_changed?: () -> bool
-  def pv_previous_change: () -> Array[Integer?]?
-  def pv_previously_was: () -> Integer?
-  def pv_before_last_save: () -> Integer?
-  def pv_change_to_be_saved: () -> Array[Integer?]?
-  def pv_in_database: () -> Integer?
-  def saved_change_to_pv: () -> Array[Integer?]?
-  def saved_change_to_pv?: () -> bool
-  def will_save_change_to_pv?: () -> bool
-  def restore_pv!: () -> void
-  def clear_pv_change: () -> void
+  attr_accessor password_digest(): String?
+  def password_digest_changed?: () -> bool
+  def password_digest_change: () -> [ String?, String? ]
+  def password_digest_will_change!: () -> void
+  def password_digest_was: () -> String?
+  def password_digest_previously_changed?: () -> bool
+  def password_digest_previous_change: () -> Array[String?]?
+  def password_digest_previously_was: () -> String?
+  def password_digest_before_last_save: () -> String?
+  def password_digest_change_to_be_saved: () -> Array[String?]?
+  def password_digest_in_database: () -> String?
+  def saved_change_to_password_digest: () -> Array[String?]?
+  def saved_change_to_password_digest?: () -> bool
+  def will_save_change_to_password_digest?: () -> bool
+  def restore_password_digest!: () -> void
+  def clear_password_digest_change: () -> void
 
   module GeneratedRelationMethods
   end
 
   class ActiveRecord_Relation < ActiveRecord::Relation
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Artist, String]
-    include Enumerable[Artist]
+    include _ActiveRecord_Relation[User, String]
+    include Enumerable[User]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[Artist, String]
+    include _ActiveRecord_Relation[User, String]
   end
 end
