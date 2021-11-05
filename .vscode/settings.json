@@ -2,6 +2,7 @@
   "emeraldwalk.runonsave": {
     "commands": [
       {
+        // vscode の rubocop だと -A が実行できないため追加
         "match": "\\.rb$|\\.rake$|\\.ru$|Gemfile|Steepfile",
         "cmd": "rubocop -A `echo '${file}' | sed 's@.*/music-server/@@'`"
       }

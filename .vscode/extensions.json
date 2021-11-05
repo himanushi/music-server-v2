@@ -1,3 +1,12 @@
 {
-  "recommendations": ["emeraldwalk.runonsave", "misogi.ruby-rubocop"]
+  "recommendations": [
+    "emeraldwalk.runonsave",
+    "misogi.ruby-rubocop",
+    "pkief.material-icon-theme",
+    "soutaro.rbs-syntax",
+    "rebornix.ruby",
+    "esbenp.prettier-vscode",
+    "soutaro.steep-vscode",
+    "wingrunr21.vscode-ruby"
+  ]
 }
