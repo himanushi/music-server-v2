@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
     t.integer "popularity", default: 0, null: false
     t.integer "pv", default: 0, null: false
     t.index ["created_at"], name: "index_artists_on_created_at"
-    t.index ["name"], name: "index_artists_on_name", unique: true
+    t.index ["name"], name: "index_artists_on_name"
     t.index ["popularity"], name: "index_artists_on_popularity"
     t.index ["status"], name: "index_artists_on_status"
   end
