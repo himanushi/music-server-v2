@@ -10,7 +10,7 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
       t.integer(:popularity, default: 0, null: false)
       t.integer(:pv, default: 0, null: false)
     end
-    add_index(:artists, :name, unique: true)
+    add_index(:artists, :name)
     add_index(:artists, :status)
     add_index(:artists, :popularity)
     add_index(:artists, :created_at)
