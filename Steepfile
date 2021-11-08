@@ -35,7 +35,7 @@ target :app do
   library(*libs)
 
   # nil の場合は無視する
-  hint = :hint
+  # hint = :hint
   # info = :infomation
   # warn = :warning
   error = :error
@@ -59,8 +59,8 @@ target :app do
       steep::InsufficientPositionalArguments => error,
       steep::MethodArityMismatch => error,
       steep::MethodBodyTypeMismatch => error,
-      # sig で宣言した method が実装されていない場合はヒント
-      steep::MethodDefinitionMissing => hint,
+      # sig で宣言した method が実装されていない場合は無視
+      steep::MethodDefinitionMissing => nil,
       steep::MethodParameterMismatch => error,
       steep::MethodReturnTypeAnnotationMismatch => error,
       steep::NoMethod => error,
