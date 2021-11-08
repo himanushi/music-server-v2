@@ -1,5 +1,5 @@
-class AlbumTrack < ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[AlbumTrack, ActiveRecord_Relation, String]
+class AppleMusicTrack < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AppleMusicTrack, ActiveRecord_Relation, String]
 
   attr_accessor id(): String
   def id_changed?: () -> bool
@@ -86,6 +86,23 @@ class AlbumTrack < ApplicationRecord
   def restore_track_id!: () -> void
   def clear_track_id_change: () -> void
 
+  attr_accessor apple_music_id(): String
+  def apple_music_id_changed?: () -> bool
+  def apple_music_id_change: () -> [ String?, String? ]
+  def apple_music_id_will_change!: () -> void
+  def apple_music_id_was: () -> String?
+  def apple_music_id_previously_changed?: () -> bool
+  def apple_music_id_previous_change: () -> Array[String?]?
+  def apple_music_id_previously_was: () -> String?
+  def apple_music_id_before_last_save: () -> String?
+  def apple_music_id_change_to_be_saved: () -> Array[String?]?
+  def apple_music_id_in_database: () -> String?
+  def saved_change_to_apple_music_id: () -> Array[String?]?
+  def saved_change_to_apple_music_id?: () -> bool
+  def will_save_change_to_apple_music_id?: () -> bool
+  def restore_apple_music_id!: () -> void
+  def clear_apple_music_id_change: () -> void
+
   attr_accessor name(): String
   def name_changed?: () -> bool
   def name_change: () -> [ String?, String? ]
@@ -102,23 +119,6 @@ class AlbumTrack < ApplicationRecord
   def will_save_change_to_name?: () -> bool
   def restore_name!: () -> void
   def clear_name_change: () -> void
-
-  attr_accessor service_id(): String
-  def service_id_changed?: () -> bool
-  def service_id_change: () -> [ String?, String? ]
-  def service_id_will_change!: () -> void
-  def service_id_was: () -> String?
-  def service_id_previously_changed?: () -> bool
-  def service_id_previous_change: () -> Array[String?]?
-  def service_id_previously_was: () -> String?
-  def service_id_before_last_save: () -> String?
-  def service_id_change_to_be_saved: () -> Array[String?]?
-  def service_id_in_database: () -> String?
-  def saved_change_to_service_id: () -> Array[String?]?
-  def saved_change_to_service_id?: () -> bool
-  def will_save_change_to_service_id?: () -> bool
-  def restore_service_id!: () -> void
-  def clear_service_id_change: () -> void
 
   attr_accessor playable(): bool
   def playable_changed?: () -> bool
@@ -298,24 +298,18 @@ class AlbumTrack < ApplicationRecord
   def build_album: (untyped) -> Album
   def create_album: (untyped) -> Album
   def create_album!: (untyped) -> Album
-  def track: () -> Track
-  def track=: (Track?) -> Track?
-  def reload_track: () -> Track?
-  def build_track: (untyped) -> Track
-  def create_track: (untyped) -> Track
-  def create_track!: (untyped) -> Track
 
   module GeneratedRelationMethods
   end
 
   class ActiveRecord_Relation < ActiveRecord::Relation
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[AlbumTrack, String]
-    include Enumerable[AlbumTrack]
+    include _ActiveRecord_Relation[AppleMusicTrack, String]
+    include Enumerable[AppleMusicTrack]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[AlbumTrack, String]
+    include _ActiveRecord_Relation[AppleMusicTrack, String]
   end
 end

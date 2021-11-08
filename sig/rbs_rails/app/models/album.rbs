@@ -52,40 +52,6 @@ class Album < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
-  attr_accessor name(): String
-  def name_changed?: () -> bool
-  def name_change: () -> [ String?, String? ]
-  def name_will_change!: () -> void
-  def name_was: () -> String?
-  def name_previously_changed?: () -> bool
-  def name_previous_change: () -> Array[String?]?
-  def name_previously_was: () -> String?
-  def name_before_last_save: () -> String?
-  def name_change_to_be_saved: () -> Array[String?]?
-  def name_in_database: () -> String?
-  def saved_change_to_name: () -> Array[String?]?
-  def saved_change_to_name?: () -> bool
-  def will_save_change_to_name?: () -> bool
-  def restore_name!: () -> void
-  def clear_name_change: () -> void
-
-  attr_accessor service_id(): String
-  def service_id_changed?: () -> bool
-  def service_id_change: () -> [ String?, String? ]
-  def service_id_will_change!: () -> void
-  def service_id_was: () -> String?
-  def service_id_previously_changed?: () -> bool
-  def service_id_previous_change: () -> Array[String?]?
-  def service_id_previously_was: () -> String?
-  def service_id_before_last_save: () -> String?
-  def service_id_change_to_be_saved: () -> Array[String?]?
-  def service_id_in_database: () -> String?
-  def saved_change_to_service_id: () -> Array[String?]?
-  def saved_change_to_service_id?: () -> bool
-  def will_save_change_to_service_id?: () -> bool
-  def restore_service_id!: () -> void
-  def clear_service_id_change: () -> void
-
   attr_accessor status(): String
   def status_changed?: () -> bool
   def status_change: () -> [ String?, String? ]
@@ -102,24 +68,6 @@ class Album < ApplicationRecord
   def will_save_change_to_status?: () -> bool
   def restore_status!: () -> void
   def clear_status_change: () -> void
-
-  attr_accessor playable(): bool
-  def playable_changed?: () -> bool
-  def playable_change: () -> [ bool?, bool? ]
-  def playable_will_change!: () -> void
-  def playable_was: () -> bool?
-  def playable_previously_changed?: () -> bool
-  def playable_previous_change: () -> Array[bool?]?
-  def playable_previously_was: () -> bool?
-  def playable_before_last_save: () -> bool?
-  def playable_change_to_be_saved: () -> Array[bool?]?
-  def playable_in_database: () -> bool?
-  def saved_change_to_playable: () -> Array[bool?]?
-  def saved_change_to_playable?: () -> bool
-  def will_save_change_to_playable?: () -> bool
-  def restore_playable!: () -> void
-  def clear_playable_change: () -> void
-  attr_accessor playable?(): bool
 
   attr_accessor release_date(): ActiveSupport::TimeWithZone
   def release_date_changed?: () -> bool
@@ -138,108 +86,6 @@ class Album < ApplicationRecord
   def restore_release_date!: () -> void
   def clear_release_date_change: () -> void
 
-  attr_accessor total_tracks(): Integer
-  def total_tracks_changed?: () -> bool
-  def total_tracks_change: () -> [ Integer?, Integer? ]
-  def total_tracks_will_change!: () -> void
-  def total_tracks_was: () -> Integer?
-  def total_tracks_previously_changed?: () -> bool
-  def total_tracks_previous_change: () -> Array[Integer?]?
-  def total_tracks_previously_was: () -> Integer?
-  def total_tracks_before_last_save: () -> Integer?
-  def total_tracks_change_to_be_saved: () -> Array[Integer?]?
-  def total_tracks_in_database: () -> Integer?
-  def saved_change_to_total_tracks: () -> Array[Integer?]?
-  def saved_change_to_total_tracks?: () -> bool
-  def will_save_change_to_total_tracks?: () -> bool
-  def restore_total_tracks!: () -> void
-  def clear_total_tracks_change: () -> void
-
-  attr_accessor record_label(): String
-  def record_label_changed?: () -> bool
-  def record_label_change: () -> [ String?, String? ]
-  def record_label_will_change!: () -> void
-  def record_label_was: () -> String?
-  def record_label_previously_changed?: () -> bool
-  def record_label_previous_change: () -> Array[String?]?
-  def record_label_previously_was: () -> String?
-  def record_label_before_last_save: () -> String?
-  def record_label_change_to_be_saved: () -> Array[String?]?
-  def record_label_in_database: () -> String?
-  def saved_change_to_record_label: () -> Array[String?]?
-  def saved_change_to_record_label?: () -> bool
-  def will_save_change_to_record_label?: () -> bool
-  def restore_record_label!: () -> void
-  def clear_record_label_change: () -> void
-
-  attr_accessor copyright(): String
-  def copyright_changed?: () -> bool
-  def copyright_change: () -> [ String?, String? ]
-  def copyright_will_change!: () -> void
-  def copyright_was: () -> String?
-  def copyright_previously_changed?: () -> bool
-  def copyright_previous_change: () -> Array[String?]?
-  def copyright_previously_was: () -> String?
-  def copyright_before_last_save: () -> String?
-  def copyright_change_to_be_saved: () -> Array[String?]?
-  def copyright_in_database: () -> String?
-  def saved_change_to_copyright: () -> Array[String?]?
-  def saved_change_to_copyright?: () -> bool
-  def will_save_change_to_copyright?: () -> bool
-  def restore_copyright!: () -> void
-  def clear_copyright_change: () -> void
-
-  attr_accessor artwork_url(): String
-  def artwork_url_changed?: () -> bool
-  def artwork_url_change: () -> [ String?, String? ]
-  def artwork_url_will_change!: () -> void
-  def artwork_url_was: () -> String?
-  def artwork_url_previously_changed?: () -> bool
-  def artwork_url_previous_change: () -> Array[String?]?
-  def artwork_url_previously_was: () -> String?
-  def artwork_url_before_last_save: () -> String?
-  def artwork_url_change_to_be_saved: () -> Array[String?]?
-  def artwork_url_in_database: () -> String?
-  def saved_change_to_artwork_url: () -> Array[String?]?
-  def saved_change_to_artwork_url?: () -> bool
-  def will_save_change_to_artwork_url?: () -> bool
-  def restore_artwork_url!: () -> void
-  def clear_artwork_url_change: () -> void
-
-  attr_accessor artwork_width(): Integer
-  def artwork_width_changed?: () -> bool
-  def artwork_width_change: () -> [ Integer?, Integer? ]
-  def artwork_width_will_change!: () -> void
-  def artwork_width_was: () -> Integer?
-  def artwork_width_previously_changed?: () -> bool
-  def artwork_width_previous_change: () -> Array[Integer?]?
-  def artwork_width_previously_was: () -> Integer?
-  def artwork_width_before_last_save: () -> Integer?
-  def artwork_width_change_to_be_saved: () -> Array[Integer?]?
-  def artwork_width_in_database: () -> Integer?
-  def saved_change_to_artwork_width: () -> Array[Integer?]?
-  def saved_change_to_artwork_width?: () -> bool
-  def will_save_change_to_artwork_width?: () -> bool
-  def restore_artwork_width!: () -> void
-  def clear_artwork_width_change: () -> void
-
-  attr_accessor artwork_height(): Integer
-  def artwork_height_changed?: () -> bool
-  def artwork_height_change: () -> [ Integer?, Integer? ]
-  def artwork_height_will_change!: () -> void
-  def artwork_height_was: () -> Integer?
-  def artwork_height_previously_changed?: () -> bool
-  def artwork_height_previous_change: () -> Array[Integer?]?
-  def artwork_height_previously_was: () -> Integer?
-  def artwork_height_before_last_save: () -> Integer?
-  def artwork_height_change_to_be_saved: () -> Array[Integer?]?
-  def artwork_height_in_database: () -> Integer?
-  def saved_change_to_artwork_height: () -> Array[Integer?]?
-  def saved_change_to_artwork_height?: () -> bool
-  def will_save_change_to_artwork_height?: () -> bool
-  def restore_artwork_height!: () -> void
-  def clear_artwork_height_change: () -> void
-
   attr_accessor upc(): String
   def upc_changed?: () -> bool
   def upc_change: () -> [ String?, String? ]
@@ -256,6 +102,23 @@ class Album < ApplicationRecord
   def will_save_change_to_upc?: () -> bool
   def restore_upc!: () -> void
   def clear_upc_change: () -> void
+
+  attr_accessor total_tracks(): Integer
+  def total_tracks_changed?: () -> bool
+  def total_tracks_change: () -> [ Integer?, Integer? ]
+  def total_tracks_will_change!: () -> void
+  def total_tracks_was: () -> Integer?
+  def total_tracks_previously_changed?: () -> bool
+  def total_tracks_previous_change: () -> Array[Integer?]?
+  def total_tracks_previously_was: () -> Integer?
+  def total_tracks_before_last_save: () -> Integer?
+  def total_tracks_change_to_be_saved: () -> Array[Integer?]?
+  def total_tracks_in_database: () -> Integer?
+  def saved_change_to_total_tracks: () -> Array[Integer?]?
+  def saved_change_to_total_tracks?: () -> bool
+  def will_save_change_to_total_tracks?: () -> bool
+  def restore_total_tracks!: () -> void
+  def clear_total_tracks_change: () -> void
 
   attr_accessor popularity(): Integer
   def popularity_changed?: () -> bool
@@ -299,10 +162,10 @@ class Album < ApplicationRecord
   def artists=: (Artist::ActiveRecord_Associations_CollectionProxy | Array[Artist]) -> (Artist::ActiveRecord_Associations_CollectionProxy | Array[Artist])
   def artist_ids: () -> Array[Integer]
   def artist_ids=: (Array[Integer]) -> Array[Integer]
-  def album_tracks: () -> AlbumTrack::ActiveRecord_Associations_CollectionProxy
-  def album_tracks=: (AlbumTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumTrack]) -> (AlbumTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumTrack])
-  def album_track_ids: () -> Array[Integer]
-  def album_track_ids=: (Array[Integer]) -> Array[Integer]
+  def album_has_tracks: () -> AlbumHasTrack::ActiveRecord_Associations_CollectionProxy
+  def album_has_tracks=: (AlbumHasTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumHasTrack]) -> (AlbumHasTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumHasTrack])
+  def album_has_track_ids: () -> Array[Integer]
+  def album_has_track_ids=: (Array[Integer]) -> Array[Integer]
   def tracks: () -> Track::ActiveRecord_Associations_CollectionProxy
   def tracks=: (Track::ActiveRecord_Associations_CollectionProxy | Array[Track]) -> (Track::ActiveRecord_Associations_CollectionProxy | Array[Track])
   def track_ids: () -> Array[Integer]

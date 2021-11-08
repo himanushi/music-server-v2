@@ -45,6 +45,7 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
     create_table(:apple_music_albums, id: false) do |t|
       t.string(:id, limit: 16, primary_key: true, null: false)
       t.timestamps
+      t.string(:album_id, limit: 16, null: false)
       t.string(:apple_music_id, limit: 191, null: false)
       t.string(:name, limit: 191, null: false)
       t.boolean(:playable, default: false, null: false)
@@ -59,8 +60,9 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
       t.integer(:popularity, default: 0, null: false)
       t.integer(:pv, default: 0, null: false)
     end
-    add_index(:apple_music_albums, :name)
+    add_foreign_key(:apple_music_albums, :albums, dependent: :destroy)
     add_index(:apple_music_albums, :apple_music_id, unique: true)
+    add_index(:apple_music_albums, :name)
     add_index(:apple_music_albums, :release_date)
     add_index(:apple_music_albums, :popularity)
     add_index(:apple_music_albums, :created_at)
@@ -97,6 +99,16 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
     add_foreign_key(:artist_has_tracks, :artists, dependent: :destroy)
     add_foreign_key(:artist_has_tracks, :tracks, dependent: :destroy)
     add_index(:artist_has_tracks, %i[artist_id track_id], unique: true)
+
+    create_table(:album_has_tracks, id: false) do |t|
+      t.string(:id, limit: 16, primary_key: true, null: false)
+      t.timestamps
+      t.string(:album_id, limit: 16, null: false)
+      t.string(:track_id, limit: 16, null: false)
+    end
+    add_foreign_key(:album_has_tracks, :albums, dependent: :destroy)
+    add_foreign_key(:album_has_tracks, :tracks, dependent: :destroy)
+    add_index(:album_has_tracks, %i[album_id track_id], unique: true)
 
     create_table(:apple_music_tracks, id: false) do |t|
       t.string(:id, limit: 16, primary_key: true, null: false)

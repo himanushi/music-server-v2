@@ -12,6 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2021_10_23_000000) do
 
+  create_table "album_has_tracks", id: { type: :string, limit: 16 }, charset: "utf8mb4", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "album_id", limit: 16, null: false
+    t.string "track_id", limit: 16, null: false
+    t.index ["album_id", "track_id"], name: "index_album_has_tracks_on_album_id_and_track_id", unique: true
+    t.index ["track_id"], name: "fk_rails_00ff058104"
+  end
+
   create_table "albums", id: { type: :string, limit: 16 }, charset: "utf8mb4", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
   create_table "apple_music_albums", id: { type: :string, limit: 16 }, charset: "utf8mb4", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "album_id", limit: 16, null: false
     t.string "apple_music_id", limit: 191, null: false
     t.string "name", limit: 191, null: false
     t.boolean "playable", default: false, null: false
@@ -52,6 +62,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
     t.string "upc", null: false
     t.integer "popularity", default: 0, null: false
     t.integer "pv", default: 0, null: false
+    t.index ["album_id"], name: "fk_rails_7a880d8bee"
     t.index ["apple_music_id"], name: "index_apple_music_albums_on_apple_music_id", unique: true
     t.index ["created_at"], name: "index_apple_music_albums_on_created_at"
     t.index ["name"], name: "index_apple_music_albums_on_name"
@@ -210,7 +221,10 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "album_has_tracks", "albums"
+  add_foreign_key "album_has_tracks", "tracks"
   add_foreign_key "allowed_actions", "roles"
+  add_foreign_key "apple_music_albums", "albums"
   add_foreign_key "apple_music_artists", "artists"
   add_foreign_key "apple_music_tracks", "albums"
   add_foreign_key "apple_music_tracks", "tracks"

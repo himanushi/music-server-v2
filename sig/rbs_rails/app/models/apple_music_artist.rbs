@@ -1,5 +1,5 @@
-class IgnoreContent < ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[IgnoreContent, ActiveRecord_Relation, String]
+class AppleMusicArtist < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AppleMusicArtist, ActiveRecord_Relation, String]
 
   attr_accessor id(): String
   def id_changed?: () -> bool
@@ -52,6 +52,23 @@ class IgnoreContent < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
+  attr_accessor artist_id(): String
+  def artist_id_changed?: () -> bool
+  def artist_id_change: () -> [ String?, String? ]
+  def artist_id_will_change!: () -> void
+  def artist_id_was: () -> String?
+  def artist_id_previously_changed?: () -> bool
+  def artist_id_previous_change: () -> Array[String?]?
+  def artist_id_previously_was: () -> String?
+  def artist_id_before_last_save: () -> String?
+  def artist_id_change_to_be_saved: () -> Array[String?]?
+  def artist_id_in_database: () -> String?
+  def saved_change_to_artist_id: () -> Array[String?]?
+  def saved_change_to_artist_id?: () -> bool
+  def will_save_change_to_artist_id?: () -> bool
+  def restore_artist_id!: () -> void
+  def clear_artist_id_change: () -> void
+
   attr_accessor apple_music_id(): String
   def apple_music_id_changed?: () -> bool
   def apple_music_id_change: () -> [ String?, String? ]
@@ -69,34 +86,41 @@ class IgnoreContent < ApplicationRecord
   def restore_apple_music_id!: () -> void
   def clear_apple_music_id_change: () -> void
 
-  attr_accessor reason(): String
-  def reason_changed?: () -> bool
-  def reason_change: () -> [ String?, String? ]
-  def reason_will_change!: () -> void
-  def reason_was: () -> String?
-  def reason_previously_changed?: () -> bool
-  def reason_previous_change: () -> Array[String?]?
-  def reason_previously_was: () -> String?
-  def reason_before_last_save: () -> String?
-  def reason_change_to_be_saved: () -> Array[String?]?
-  def reason_in_database: () -> String?
-  def saved_change_to_reason: () -> Array[String?]?
-  def saved_change_to_reason?: () -> bool
-  def will_save_change_to_reason?: () -> bool
-  def restore_reason!: () -> void
-  def clear_reason_change: () -> void
+  attr_accessor name(): String
+  def name_changed?: () -> bool
+  def name_change: () -> [ String?, String? ]
+  def name_will_change!: () -> void
+  def name_was: () -> String?
+  def name_previously_changed?: () -> bool
+  def name_previous_change: () -> Array[String?]?
+  def name_previously_was: () -> String?
+  def name_before_last_save: () -> String?
+  def name_change_to_be_saved: () -> Array[String?]?
+  def name_in_database: () -> String?
+  def saved_change_to_name: () -> Array[String?]?
+  def saved_change_to_name?: () -> bool
+  def will_save_change_to_name?: () -> bool
+  def restore_name!: () -> void
+  def clear_name_change: () -> void
+
+  def artist: () -> Artist
+  def artist=: (Artist?) -> Artist?
+  def reload_artist: () -> Artist?
+  def build_artist: (untyped) -> Artist
+  def create_artist: (untyped) -> Artist
+  def create_artist!: (untyped) -> Artist
 
   module GeneratedRelationMethods
   end
 
   class ActiveRecord_Relation < ActiveRecord::Relation
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[IgnoreContent, String]
-    include Enumerable[IgnoreContent]
+    include _ActiveRecord_Relation[AppleMusicArtist, String]
+    include Enumerable[AppleMusicArtist]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[IgnoreContent, String]
+    include _ActiveRecord_Relation[AppleMusicArtist, String]
   end
 end

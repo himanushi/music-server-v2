@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class AlbumTrack < ::ApplicationRecord
-  def table_id() = 'abt'
+class AlbumHasTrack < ::ApplicationRecord
+  def table_id() = 'bht'
 
   belongs_to :album
   belongs_to :track

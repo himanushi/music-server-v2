@@ -136,10 +136,10 @@ class Artist < ApplicationRecord
   def tracks=: (Track::ActiveRecord_Associations_CollectionProxy | Array[Track]) -> (Track::ActiveRecord_Associations_CollectionProxy | Array[Track])
   def track_ids: () -> Array[Integer]
   def track_ids=: (Array[Integer]) -> Array[Integer]
-  def service_artists: () -> ServiceArtist::ActiveRecord_Associations_CollectionProxy
-  def service_artists=: (ServiceArtist::ActiveRecord_Associations_CollectionProxy | Array[ServiceArtist]) -> (ServiceArtist::ActiveRecord_Associations_CollectionProxy | Array[ServiceArtist])
-  def service_artist_ids: () -> Array[Integer]
-  def service_artist_ids=: (Array[Integer]) -> Array[Integer]
+  def apple_music_artists: () -> AppleMusicArtist::ActiveRecord_Associations_CollectionProxy
+  def apple_music_artists=: (AppleMusicArtist::ActiveRecord_Associations_CollectionProxy | Array[AppleMusicArtist]) -> (AppleMusicArtist::ActiveRecord_Associations_CollectionProxy | Array[AppleMusicArtist])
+  def apple_music_artist_ids: () -> Array[Integer]
+  def apple_music_artist_ids=: (Array[Integer]) -> Array[Integer]
   def favorites: () -> Favorite::ActiveRecord_Associations_CollectionProxy
   def favorites=: (Favorite::ActiveRecord_Associations_CollectionProxy | Array[Favorite]) -> (Favorite::ActiveRecord_Associations_CollectionProxy | Array[Favorite])
   def favorite_ids: () -> Array[Integer]

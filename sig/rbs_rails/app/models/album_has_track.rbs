@@ -1,5 +1,5 @@
-class ServiceArtist < ApplicationRecord
-  extend _ActiveRecord_Relation_ClassMethods[ServiceArtist, ActiveRecord_Relation, String]
+class AlbumHasTrack < ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[AlbumHasTrack, ActiveRecord_Relation, String]
 
   attr_accessor id(): String
   def id_changed?: () -> bool
@@ -52,75 +52,64 @@ class ServiceArtist < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
-  attr_accessor artist_id(): String
-  def artist_id_changed?: () -> bool
-  def artist_id_change: () -> [ String?, String? ]
-  def artist_id_will_change!: () -> void
-  def artist_id_was: () -> String?
-  def artist_id_previously_changed?: () -> bool
-  def artist_id_previous_change: () -> Array[String?]?
-  def artist_id_previously_was: () -> String?
-  def artist_id_before_last_save: () -> String?
-  def artist_id_change_to_be_saved: () -> Array[String?]?
-  def artist_id_in_database: () -> String?
-  def saved_change_to_artist_id: () -> Array[String?]?
-  def saved_change_to_artist_id?: () -> bool
-  def will_save_change_to_artist_id?: () -> bool
-  def restore_artist_id!: () -> void
-  def clear_artist_id_change: () -> void
+  attr_accessor album_id(): String
+  def album_id_changed?: () -> bool
+  def album_id_change: () -> [ String?, String? ]
+  def album_id_will_change!: () -> void
+  def album_id_was: () -> String?
+  def album_id_previously_changed?: () -> bool
+  def album_id_previous_change: () -> Array[String?]?
+  def album_id_previously_was: () -> String?
+  def album_id_before_last_save: () -> String?
+  def album_id_change_to_be_saved: () -> Array[String?]?
+  def album_id_in_database: () -> String?
+  def saved_change_to_album_id: () -> Array[String?]?
+  def saved_change_to_album_id?: () -> bool
+  def will_save_change_to_album_id?: () -> bool
+  def restore_album_id!: () -> void
+  def clear_album_id_change: () -> void
 
-  attr_accessor service_id(): String
-  def service_id_changed?: () -> bool
-  def service_id_change: () -> [ String?, String? ]
-  def service_id_will_change!: () -> void
-  def service_id_was: () -> String?
-  def service_id_previously_changed?: () -> bool
-  def service_id_previous_change: () -> Array[String?]?
-  def service_id_previously_was: () -> String?
-  def service_id_before_last_save: () -> String?
-  def service_id_change_to_be_saved: () -> Array[String?]?
-  def service_id_in_database: () -> String?
-  def saved_change_to_service_id: () -> Array[String?]?
-  def saved_change_to_service_id?: () -> bool
-  def will_save_change_to_service_id?: () -> bool
-  def restore_service_id!: () -> void
-  def clear_service_id_change: () -> void
+  attr_accessor track_id(): String
+  def track_id_changed?: () -> bool
+  def track_id_change: () -> [ String?, String? ]
+  def track_id_will_change!: () -> void
+  def track_id_was: () -> String?
+  def track_id_previously_changed?: () -> bool
+  def track_id_previous_change: () -> Array[String?]?
+  def track_id_previously_was: () -> String?
+  def track_id_before_last_save: () -> String?
+  def track_id_change_to_be_saved: () -> Array[String?]?
+  def track_id_in_database: () -> String?
+  def saved_change_to_track_id: () -> Array[String?]?
+  def saved_change_to_track_id?: () -> bool
+  def will_save_change_to_track_id?: () -> bool
+  def restore_track_id!: () -> void
+  def clear_track_id_change: () -> void
 
-  attr_accessor name(): String
-  def name_changed?: () -> bool
-  def name_change: () -> [ String?, String? ]
-  def name_will_change!: () -> void
-  def name_was: () -> String?
-  def name_previously_changed?: () -> bool
-  def name_previous_change: () -> Array[String?]?
-  def name_previously_was: () -> String?
-  def name_before_last_save: () -> String?
-  def name_change_to_be_saved: () -> Array[String?]?
-  def name_in_database: () -> String?
-  def saved_change_to_name: () -> Array[String?]?
-  def saved_change_to_name?: () -> bool
-  def will_save_change_to_name?: () -> bool
-  def restore_name!: () -> void
-  def clear_name_change: () -> void
-
-  def artist: () -> Artist
-  def artist=: (Artist?) -> Artist?
-  def reload_artist: () -> Artist?
-  def build_artist: (untyped) -> Artist
-  def create_artist: (untyped) -> Artist
-  def create_artist!: (untyped) -> Artist
+  def album: () -> Album
+  def album=: (Album?) -> Album?
+  def reload_album: () -> Album?
+  def build_album: (untyped) -> Album
+  def create_album: (untyped) -> Album
+  def create_album!: (untyped) -> Album
+  def track: () -> Track
+  def track=: (Track?) -> Track?
+  def reload_track: () -> Track?
+  def build_track: (untyped) -> Track
+  def create_track: (untyped) -> Track
+  def create_track!: (untyped) -> Track
 
   module GeneratedRelationMethods
   end
 
   class ActiveRecord_Relation < ActiveRecord::Relation
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[ServiceArtist, String]
-    include Enumerable[ServiceArtist]
+    include _ActiveRecord_Relation[AlbumHasTrack, String]
+    include Enumerable[AlbumHasTrack]
   end
 
   class ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
     include GeneratedRelationMethods
-    include _ActiveRecord_Relation[ServiceArtist, String]
+    include _ActiveRecord_Relation[AlbumHasTrack, String]
   end
 end

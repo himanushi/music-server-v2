@@ -52,6 +52,23 @@ class Track < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
+  attr_accessor status(): Integer
+  def status_changed?: () -> bool
+  def status_change: () -> [ Integer?, Integer? ]
+  def status_will_change!: () -> void
+  def status_was: () -> Integer?
+  def status_previously_changed?: () -> bool
+  def status_previous_change: () -> Array[Integer?]?
+  def status_previously_was: () -> Integer?
+  def status_before_last_save: () -> Integer?
+  def status_change_to_be_saved: () -> Array[Integer?]?
+  def status_in_database: () -> Integer?
+  def saved_change_to_status: () -> Array[Integer?]?
+  def saved_change_to_status?: () -> bool
+  def will_save_change_to_status?: () -> bool
+  def restore_status!: () -> void
+  def clear_status_change: () -> void
+
   attr_accessor isrc(): String
   def isrc_changed?: () -> bool
   def isrc_change: () -> [ String?, String? ]
@@ -111,10 +128,10 @@ class Track < ApplicationRecord
   def artists=: (Artist::ActiveRecord_Associations_CollectionProxy | Array[Artist]) -> (Artist::ActiveRecord_Associations_CollectionProxy | Array[Artist])
   def artist_ids: () -> Array[Integer]
   def artist_ids=: (Array[Integer]) -> Array[Integer]
-  def album_tracks: () -> AlbumTrack::ActiveRecord_Associations_CollectionProxy
-  def album_tracks=: (AlbumTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumTrack]) -> (AlbumTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumTrack])
-  def album_track_ids: () -> Array[Integer]
-  def album_track_ids=: (Array[Integer]) -> Array[Integer]
+  def album_has_tracks: () -> AlbumHasTrack::ActiveRecord_Associations_CollectionProxy
+  def album_has_tracks=: (AlbumHasTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumHasTrack]) -> (AlbumHasTrack::ActiveRecord_Associations_CollectionProxy | Array[AlbumHasTrack])
+  def album_has_track_ids: () -> Array[Integer]
+  def album_has_track_ids=: (Array[Integer]) -> Array[Integer]
   def albums: () -> Album::ActiveRecord_Associations_CollectionProxy
   def albums=: (Album::ActiveRecord_Associations_CollectionProxy | Array[Album]) -> (Album::ActiveRecord_Associations_CollectionProxy | Array[Album])
   def album_ids: () -> Array[Integer]
