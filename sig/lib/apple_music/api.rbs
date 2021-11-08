@@ -26,6 +26,8 @@ module AppleMusic
 
     def get_album: (::String apple_music_id) -> Response::albums
 
+    def get_track: (::String apple_music_id) -> Response::tracks
+
     def get_track_by_isrc: (::String isrc) -> Response::tracks
 
     private
