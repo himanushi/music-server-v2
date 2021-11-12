@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
   create_table "apple_music_tracks", id: { type: :string, limit: 16 }, charset: "utf8mb4", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "album_id", limit: 16, null: false
+    t.string "apple_music_album_id", limit: 16, null: false
     t.string "track_id", limit: 16, null: false
     t.string "apple_music_id", limit: 191, null: false
     t.string "name", limit: 191, null: false
@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
     t.text "artwork_url", null: false
     t.integer "artwork_width", null: false
     t.integer "artwork_height", null: false
-    t.index ["album_id", "disc_number", "track_number"], name: "index_apple_music_tracks_on_am_id_and_numbers", unique: true
-    t.index ["apple_music_id"], name: "index_apple_music_tracks_on_apple_music_id"
+    t.index ["apple_music_album_id", "disc_number", "track_number"], name: "index_apple_music_tracks_on_am_id_and_numbers", unique: true
+    t.index ["apple_music_id"], name: "index_apple_music_tracks_on_apple_music_id", unique: true
     t.index ["duration_ms"], name: "index_apple_music_tracks_on_duration_ms"
     t.index ["name"], name: "index_apple_music_tracks_on_name"
     t.index ["track_id"], name: "fk_rails_e512b7f7bc"
@@ -226,7 +226,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
   add_foreign_key "allowed_actions", "roles"
   add_foreign_key "apple_music_albums", "albums"
   add_foreign_key "apple_music_artists", "artists"
-  add_foreign_key "apple_music_tracks", "albums"
+  add_foreign_key "apple_music_tracks", "apple_music_albums"
   add_foreign_key "apple_music_tracks", "tracks"
   add_foreign_key "artist_has_albums", "albums"
   add_foreign_key "artist_has_albums", "artists"

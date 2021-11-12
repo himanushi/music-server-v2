@@ -113,7 +113,7 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
     create_table(:apple_music_tracks, id: false) do |t|
       t.string(:id, limit: 16, primary_key: true, null: false)
       t.timestamps
-      t.string(:album_id, limit: 16, null: false)
+      t.string(:apple_music_album_id, limit: 16, null: false)
       t.string(:track_id, limit: 16, null: false)
       t.string(:apple_music_id, limit: 191, null: false)
       t.string(:name, limit: 191, null: false)
@@ -128,13 +128,13 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
       t.integer(:artwork_width, null: false)
       t.integer(:artwork_height, null: false)
     end
-    add_foreign_key(:apple_music_tracks, :albums, dependent: :destroy)
+    add_foreign_key(:apple_music_tracks, :apple_music_albums, dependent: :destroy)
     add_foreign_key(:apple_music_tracks, :tracks, dependent: :destroy)
     add_index(:apple_music_tracks, :name)
-    add_index(:apple_music_tracks, :apple_music_id)
+    add_index(:apple_music_tracks, :apple_music_id, unique: true)
     add_index(
       :apple_music_tracks,
-      %i[album_id disc_number track_number],
+      %i[apple_music_album_id disc_number track_number],
       unique: true,
       name: 'index_apple_music_tracks_on_am_id_and_numbers'
     )
