@@ -29,4 +29,7 @@ Style/StaticClass:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 15
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
