@@ -1,13 +1,21 @@
 {
-  // "emeraldwalk.runonsave": {
-  //   "commands": [
-  //     {
-  //       // vscode の rubocop だと -A が実行できないため追加
-  //       "match": "\\.rb$|\\.rake$|\\.ru$|Gemfile|Steepfile",
-  //       "cmd": "rubocop -A `echo '${file}' | sed 's@.*/music-server/@@'`"
-  //     }
-  //   ]
-  // },
+  // space 可視化
+  "editor.renderWhitespace": "boundary",
+
+  //rubocop
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        // vscode の rubocop だと -A が実行できないため追加
+        "match": "\\.rb$|\\.rake$|\\.ru$|Gemfile|Steepfile",
+        "cmd": "rubocop -A `echo '${file}' | sed 's@.*/music-server/@@'`"
+      }
+    ]
+  },
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "[ruby]": {
+    "editor.tabSize": 2
+  }
 }
