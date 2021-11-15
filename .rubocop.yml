@@ -28,6 +28,9 @@ Style/MissingElse:
 Style/StaticClass:
   Enabled: false
 
+Style/SymbolProc:
+  Enabled: false
+
 Metrics/MethodLength:
   Enabled: false
 
