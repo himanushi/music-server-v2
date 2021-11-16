@@ -10,7 +10,7 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
       t.integer(:popularity, default: 0, null: false)
       t.integer(:pv, default: 0, null: false)
     end
-    add_index(:artists, :name)
+    add_index(:artists, :name, unique: true)
     add_index(:artists, :status)
     add_index(:artists, :popularity)
     add_index(:artists, :created_at)
@@ -31,7 +31,7 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
       t.timestamps
       t.integer(:status, null: false, default: 0)
       t.datetime(:release_date, null: false)
-      t.string(:upc, null: false)
+      t.string(:upc, limit: 191, null: false)
       t.integer(:total_tracks, null: false)
       t.integer(:popularity, default: 0, null: false)
       t.integer(:pv, default: 0, null: false)
@@ -41,6 +41,7 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
     add_index(:albums, :total_tracks)
     add_index(:albums, :popularity)
     add_index(:albums, :created_at)
+    add_index(:albums, :upc, unique: true)
 
     create_table(:apple_music_albums, id: false) do |t|
       t.string(:id, limit: 16, primary_key: true, null: false)

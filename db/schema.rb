@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0, null: false
     t.datetime "release_date", null: false
-    t.string "upc", null: false
+    t.string "upc", limit: 191, null: false
     t.integer "total_tracks", null: false
     t.integer "popularity", default: 0, null: false
     t.integer "pv", default: 0, null: false
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
     t.index ["release_date"], name: "index_albums_on_release_date"
     t.index ["status"], name: "index_albums_on_status"
     t.index ["total_tracks"], name: "index_albums_on_total_tracks"
+    t.index ["upc"], name: "index_albums_on_upc", unique: true
   end
 
   create_table "allowed_actions", id: { type: :string, limit: 16 }, charset: "utf8mb4", force: :cascade do |t|
@@ -131,7 +132,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
     t.integer "popularity", default: 0, null: false
     t.integer "pv", default: 0, null: false
     t.index ["created_at"], name: "index_artists_on_created_at"
-    t.index ["name"], name: "index_artists_on_name"
+    t.index ["name"], name: "index_artists_on_name", unique: true
     t.index ["popularity"], name: "index_artists_on_popularity"
     t.index ["status"], name: "index_artists_on_status"
   end
