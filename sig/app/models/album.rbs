@@ -1,0 +1,3 @@
+class Album
+  def self.statuses: () -> ::Hash[::String, ::Integer]
+end

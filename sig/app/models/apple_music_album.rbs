@@ -1,0 +1,5 @@
+class AppleMusicAlbum
+  def self.create_by_data: (::AppleMusic::Api::Response::full_albums data) -> instance
+  def self.mapping: (::AppleMusic::Api::Response::full_album data) -> ::Hash[::Symbol, untyped]
+  def self.mapping_relation: (::AppleMusic::Api::Response::full_album data) -> ::Hash[::Symbol, untyped]
+end

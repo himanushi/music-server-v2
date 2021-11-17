@@ -10,4 +10,6 @@ class Track < ::ApplicationRecord
   has_one :playlist
   has_many :playlist_items
   has_many :favorites, as: :favorable, dependent: :destroy
+
+  enum status: { pending: 0, active: 1, ignore: 2 }
 end
