@@ -11,12 +11,16 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'mysql2', '~> 0.5'
 # App server
 gem 'puma', '~> 5.0'
+# GraphQL
+gem 'graphql', '~> 1.12.19'
+# GraphQL GUI
+gem 'graphiql-rails', '~> 1.8.0'
 # 暗号化 jwt
 gem 'jwt', '~> 2.3.0'
 
 group :development, :test do
   # Ruby debug
-  gem 'debug', '~> 1.3.0'
+  gem 'debug', '~> 1.3.4'
   # 型検証
   gem 'rbs_rails', '~> 0.9.0', require: false
 end
