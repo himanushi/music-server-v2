@@ -62,13 +62,16 @@ module AppleMusic
     end
 
     def get_album(apple_music_id)
-      get("#{catalog_url}/albums/#{apple_music_id}")
+      # @type var params: ::Hash[::String, untyped]
+      params = {}
+      params['include'] = 'artists'
+      get("#{catalog_url}/albums/#{apple_music_id}", params)
     end
 
     def get_track(apple_music_id)
       # @type var params: ::Hash[::String, untyped]
       params = {}
-      params['include'] = 'artists,albums'
+      params['include'] = 'artists'
       get("#{catalog_url}/songs/#{apple_music_id}", params)
     end
 
