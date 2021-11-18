@@ -1,0 +1,2 @@
+class Mutation < ::Types::Objects::BaseObject
+end
