@@ -31,7 +31,6 @@ target :app do
     openssl
     net-http
     uri
-    graphql
   ]
   library(*libs)
 
