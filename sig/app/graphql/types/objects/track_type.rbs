@@ -1,0 +1,6 @@
+module Types
+  module Objects
+    class TrackType < BaseObject
+    end
+  end
+end

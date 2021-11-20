@@ -52,18 +52,18 @@ class Track < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
-  attr_accessor status(): Integer
+  attr_accessor status(): String
   def status_changed?: () -> bool
-  def status_change: () -> [ Integer?, Integer? ]
+  def status_change: () -> [ String?, String? ]
   def status_will_change!: () -> void
-  def status_was: () -> Integer?
+  def status_was: () -> String?
   def status_previously_changed?: () -> bool
-  def status_previous_change: () -> Array[Integer?]?
-  def status_previously_was: () -> Integer?
-  def status_before_last_save: () -> Integer?
-  def status_change_to_be_saved: () -> Array[Integer?]?
-  def status_in_database: () -> Integer?
-  def saved_change_to_status: () -> Array[Integer?]?
+  def status_previous_change: () -> Array[String?]?
+  def status_previously_was: () -> String?
+  def status_before_last_save: () -> String?
+  def status_change_to_be_saved: () -> Array[String?]?
+  def status_in_database: () -> String?
+  def saved_change_to_status: () -> Array[String?]?
   def saved_change_to_status?: () -> bool
   def will_save_change_to_status?: () -> bool
   def restore_status!: () -> void
@@ -151,7 +151,22 @@ class Track < ApplicationRecord
   def create_playlist!: (untyped) -> Playlist
   def reload_playlist: () -> Playlist?
 
+  def pending!: () -> bool
+  def pending?: () -> bool
+  def active!: () -> bool
+  def active?: () -> bool
+  def ignore!: () -> bool
+  def ignore?: () -> bool
+  def self.pending: () -> ActiveRecord_Relation
+  def self.active: () -> ActiveRecord_Relation
+  def self.ignore: () -> ActiveRecord_Relation
+
   module GeneratedRelationMethods
+    def pending: () -> ActiveRecord_Relation
+
+    def active: () -> ActiveRecord_Relation
+
+    def ignore: () -> ActiveRecord_Relation
   end
 
   class ActiveRecord_Relation < ActiveRecord::Relation

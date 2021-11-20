@@ -52,22 +52,22 @@ class AppleMusicTrack < ApplicationRecord
   def restore_updated_at!: () -> void
   def clear_updated_at_change: () -> void
 
-  attr_accessor album_id(): String
-  def album_id_changed?: () -> bool
-  def album_id_change: () -> [ String?, String? ]
-  def album_id_will_change!: () -> void
-  def album_id_was: () -> String?
-  def album_id_previously_changed?: () -> bool
-  def album_id_previous_change: () -> Array[String?]?
-  def album_id_previously_was: () -> String?
-  def album_id_before_last_save: () -> String?
-  def album_id_change_to_be_saved: () -> Array[String?]?
-  def album_id_in_database: () -> String?
-  def saved_change_to_album_id: () -> Array[String?]?
-  def saved_change_to_album_id?: () -> bool
-  def will_save_change_to_album_id?: () -> bool
-  def restore_album_id!: () -> void
-  def clear_album_id_change: () -> void
+  attr_accessor apple_music_album_id(): String
+  def apple_music_album_id_changed?: () -> bool
+  def apple_music_album_id_change: () -> [ String?, String? ]
+  def apple_music_album_id_will_change!: () -> void
+  def apple_music_album_id_was: () -> String?
+  def apple_music_album_id_previously_changed?: () -> bool
+  def apple_music_album_id_previous_change: () -> Array[String?]?
+  def apple_music_album_id_previously_was: () -> String?
+  def apple_music_album_id_before_last_save: () -> String?
+  def apple_music_album_id_change_to_be_saved: () -> Array[String?]?
+  def apple_music_album_id_in_database: () -> String?
+  def saved_change_to_apple_music_album_id: () -> Array[String?]?
+  def saved_change_to_apple_music_album_id?: () -> bool
+  def will_save_change_to_apple_music_album_id?: () -> bool
+  def restore_apple_music_album_id!: () -> void
+  def clear_apple_music_album_id_change: () -> void
 
   attr_accessor track_id(): String
   def track_id_changed?: () -> bool
@@ -292,12 +292,18 @@ class AppleMusicTrack < ApplicationRecord
   def restore_artwork_height!: () -> void
   def clear_artwork_height_change: () -> void
 
-  def album: () -> Album
-  def album=: (Album?) -> Album?
-  def reload_album: () -> Album?
-  def build_album: (untyped) -> Album
-  def create_album: (untyped) -> Album
-  def create_album!: (untyped) -> Album
+  def apple_music_album: () -> AppleMusicAlbum
+  def apple_music_album=: (AppleMusicAlbum?) -> AppleMusicAlbum?
+  def reload_apple_music_album: () -> AppleMusicAlbum?
+  def build_apple_music_album: (untyped) -> AppleMusicAlbum
+  def create_apple_music_album: (untyped) -> AppleMusicAlbum
+  def create_apple_music_album!: (untyped) -> AppleMusicAlbum
+  def track: () -> Track
+  def track=: (Track?) -> Track?
+  def reload_track: () -> Track?
+  def build_track: (untyped) -> Track
+  def create_track: (untyped) -> Track
+  def create_track!: (untyped) -> Track
 
   module GeneratedRelationMethods
   end

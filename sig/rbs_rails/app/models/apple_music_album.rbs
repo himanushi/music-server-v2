@@ -291,6 +291,11 @@ class AppleMusicAlbum < ApplicationRecord
   def restore_pv!: () -> void
   def clear_pv_change: () -> void
 
+  def apple_music_tracks: () -> AppleMusicTrack::ActiveRecord_Associations_CollectionProxy
+  def apple_music_tracks=: (AppleMusicTrack::ActiveRecord_Associations_CollectionProxy | Array[AppleMusicTrack]) -> (AppleMusicTrack::ActiveRecord_Associations_CollectionProxy | Array[AppleMusicTrack])
+  def apple_music_track_ids: () -> Array[Integer]
+  def apple_music_track_ids=: (Array[Integer]) -> Array[Integer]
+
   def album: () -> Album
   def album=: (Album?) -> Album?
   def reload_album: () -> Album?

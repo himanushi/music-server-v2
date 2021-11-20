@@ -1,0 +1,8 @@
+module Queries
+  class AlbumsQuery < ::GraphQL::Schema::Resolver
+    class AlbumsQueryOrderEnum < ::Types::Enums::BaseEnum
+    end
+
+    def query: (**untyped) -> untyped
+  end
+end
