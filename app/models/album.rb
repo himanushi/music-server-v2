@@ -26,14 +26,31 @@ class Album < ::ApplicationRecord
 
   class << self
     def generate_relation(conditions:)
+      # @type var album_ids: ::Array[::String]
+      # @type var artist_ids: ::Array[::String]
+      # @type var track_ids: ::Array[::String]
+      # @type var name: ::String
+
       cache = true
-      conditions = { status: [:active], **conditions }
+      conditions = { status: [:active] }.merge(conditions)
       album_relation = ::Album.includes(:apple_music_album)
 
-      # 名前あいまい検索
       if conditions.key?(:name)
         name = conditions.delete(:name)
         album_relation = album_relation.where('apple_music_albums.name like :name', name: "%#{name}%")
+      end
+
+      if conditions.key?(:artist_ids)
+        artist_ids = conditions.delete(:artist_ids)
+        album_ids = ::Album.includes(:artists).where(artists: { id: artist_ids }).ids
+        track_ids = ::Track.includes(:artists).where(artists: { id: artist_ids }).ids
+        album_ids += ::Album.includes(:tracks).where(tracks: { id: track_ids }).ids
+        album_relation = album_relation.where(id: album_ids)
+      end
+
+      if conditions.key?(:track_ids)
+        track_ids = conditions.delete(:track_ids)
+        album_relation = album_relation.includes(:tracks).where(tracks: { id: track_ids })
       end
 
       { cache?: cache, relation: album_relation }
