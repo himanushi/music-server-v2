@@ -6,6 +6,19 @@ AllCops:
     - "bin/**/*"
     - "db/schema.rb"
 
+Lint/BinaryOperatorWithIdenticalOperands:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Naming/PredicateName:
+  Exclude:
+    - app/graphql/**/*.rb
+
 Style/AsciiComments:
   Enabled: false
 
@@ -29,17 +42,4 @@ Style/StaticClass:
   Enabled: false
 
 Style/SymbolProc:
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
-Metrics/AbcSize:
-  Enabled: false
-
-Naming/PredicateName:
-  Exclude:
-    - app/graphql/**/*.rb
-
-Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: false

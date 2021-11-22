@@ -19,6 +19,8 @@ gem 'graphql', '~> 1.12.19'
 gem 'graphiql-rails', '~> 1.8.0'
 # 暗号化 jwt
 gem 'jwt', '~> 2.3.0'
+# 暗号化 bcrypt
+gem 'bcrypt', '~> 3.1.16'
 
 group :development, :test do
   # Ruby debug

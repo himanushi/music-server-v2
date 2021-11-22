@@ -1,0 +1,4 @@
+class User < ::ApplicationRecord
+  def self.create_user_and_session!: -> ::User
+  def can?: (::String action_name) -> bool
+end

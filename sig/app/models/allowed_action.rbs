@@ -1,0 +1,7 @@
+class AllowedAction < ::ApplicationRecord
+  MUTATION_ACTIONS: ::Array[::String]
+  QUERY_ACTIONS: ::Array[::String]
+  CONSOLE_ACTIONS: ::Array[::String]
+  DEFAULT_ACTIONS: ::Array[::String]
+  ALL_ACTIONS: ::Array[::String]
+end

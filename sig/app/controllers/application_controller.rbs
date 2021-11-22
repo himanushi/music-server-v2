@@ -1,2 +1,8 @@
 class ApplicationController < ::ActionController::Base
+  type current_info = { user: ::User, session: ::Session, cookie: untyped }
+
+  @current_info: current_info
+
+  def token: -> ::String
+  def current_info: -> current_info
 end
