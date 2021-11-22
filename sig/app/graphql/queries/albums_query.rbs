@@ -1,5 +1,5 @@
 module Queries
-  class AlbumsQuery < ::GraphQL::Schema::Resolver
+  class AlbumsQuery < ::Queries::BaseListQuery
     class AlbumsQueryOrderEnum < ::Types::Enums::BaseEnum
     end
 

@@ -1,7 +1,7 @@
 module Types
   module Objects
     class AlbumObject < BaseObject
-      def instance: -> ::Album
+      def object: -> ::Album
       def apple_music_album: -> ::AppleMusicAlbum?
       def tracks: -> ::AppleMusicTrack::ActiveRecord_Associations_CollectionProxy?
     end

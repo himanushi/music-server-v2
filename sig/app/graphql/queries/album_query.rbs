@@ -1,5 +1,5 @@
 module Queries
-  class AlbumQuery < ::GraphQL::Schema::Resolver
+  class AlbumQuery < ::Queries::BaseQuery
     def query: (id: ::String) -> ::Album?
   end
 end
