@@ -6,6 +6,8 @@ class AppleMusicTrack < ::ApplicationRecord
   belongs_to :apple_music_album
   belongs_to :track
 
+  delegate :status, :popularity, to: :track
+
   class << self
     def create_by_data(data)
       new(mapping(data).merge(mapping_relation(data)))
@@ -45,5 +47,29 @@ class AppleMusicTrack < ::ApplicationRecord
         track: track
       }
     end
+  end
+
+  def apple_music_playable() = playable
+
+  def artwork_l
+    @artwork_l ||= build_artwork(640)
+  end
+
+  def artwork_m
+    @artwork_m ||= build_artwork(300)
+  end
+
+  private
+
+  def build_artwork(max_size)
+    height = artwork_height > max_size ? max_size : artwork_height
+    rate = Float(artwork_height) / Float(artwork_height)
+    width = Integer(rate * height)
+
+    url = artwork_url.gsub('{w}', width.to_s).gsub('{h}', height.to_s)
+
+    artwork = ::Artwork.new
+    artwork.attributes = { url: url, width: width, height: height }
+    artwork
   end
 end
