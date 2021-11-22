@@ -1,5 +1,5 @@
 class GraphqlController < ::ApplicationController
-  def execute: () -> untyped
+  def execute: -> untyped
 
   private
 

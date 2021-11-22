@@ -2,6 +2,10 @@ module AppleMusic
   class Client
     @header: ::Hash[::String, untyped]
 
-    def get: (::String url, ?::Hash[::String, untyped] params, ?::Hash[::String, untyped] header) -> untyped
+    def get: (
+      ::String url,
+      ?::Hash[::String, untyped] params,
+      ?::Hash[::String, untyped] header
+    ) -> untyped
   end
 end

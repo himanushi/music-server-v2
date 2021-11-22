@@ -14,8 +14,10 @@ module GraphQL
         ?type: untyped,
         ?default_value: untyped,
         ?description: String,
-        ?validates: Hash[untyped, untyped],
-      ) ?{ (*untyped) -> void } -> void
+        ?validates: Hash[untyped, untyped]
+      ) ?{
+        (*untyped) -> void
+      } -> void
     end
 
     class Argument
@@ -23,7 +25,17 @@ module GraphQL
     class EnumValue < Member
     end
     class Enum < Member
-      def self.value: (String graphql_name, ?String? desc, ?ast_node: untyped, ?directives: untyped, ?description: untyped, ?value: untyped, ?deprecation_reason: untyped) ?{ () -> void } -> void
+      def self.value: (
+        String graphql_name,
+        ?String? desc,
+        ?ast_node: untyped,
+        ?directives: untyped,
+        ?description: untyped,
+        ?value: untyped,
+        ?deprecation_reason: untyped
+      ) ?{
+        -> void
+      } -> void
     end
     class Field
       include Member::HasArguments
@@ -51,9 +63,9 @@ module GraphQL
       extend BaseDSLMethods
 
       module GraphQLTypeNames
-        Boolean: "Boolean"
-        ID: "ID"
-        Int: "Int"
+        Boolean: 'Boolean'
+        ID: 'ID'
+        Int: 'Int'
       end
       include GraphQLTypeNames
 
@@ -74,14 +86,16 @@ module GraphQL
           ?description: String,
           ?method: Symbol,
           ?resolver: Class,
-          ?mutation: Class,
-        ) ?{ (untyped) -> void } -> void
+          ?mutation: Class
+        ) ?{
+          (untyped) -> void
+        } -> void
         def field_class: (?Class? new_field_class) -> void
         def global_id_field: (Symbol field_name, **untyped kwargs) -> void
       end
 
       module RelayShortcuts
-        def connection_type: () -> Class
+        def connection_type: -> Class
         def connection_type_class: (?Class? new_connection_type_class) -> void
         def edge_type_class: (?Class? new_edge_type_class) -> void
       end
@@ -109,7 +123,10 @@ module GraphQL
       extend Member::HasArguments
       extend Member::HasArguments::ArgumentClassAccessor
       extend _Argument
-      def self.type: (?(Class | Array[Class] | nil) new_type, ?null: bool null) -> void
+      def self.type: (
+        ?Class | Array[Class] | nil new_type,
+        ?null: bool null
+      ) -> void
 
       attr_reader object: untyped
       attr_reader context: GraphQL::Query::Context
@@ -124,10 +141,21 @@ module GraphQL
     class Union < Member
     end
     module UniqueWithinType
-      def self.encode: (String type_name, _ToS object_value, ?separator: String separator) -> String
-      def self.decode: (String, ?separator: String separator) -> [String, String]
+      def self.encode: (
+        String type_name,
+        _ToS object_value,
+        ?separator: String separator
+      ) -> String
+      def self.decode: (
+        String,
+        ?separator: String separator
+      ) -> [String, String]
     end
-    def self.rescue_from: (*untyped err_classes) { (untyped err) -> void } -> void
+    def self.rescue_from: (
+      *untyped err_classes
+    ) {
+      (untyped err) -> void
+    } -> void
     def self.mutation: (?Class? new_mutation_object) -> void
     def self.query: (?Class? new_query_object) -> void
   end
@@ -141,7 +169,7 @@ module GraphQL
     class ISO8601Date < GraphQL::Schema::Scalar
     end
     class ISO8601DateTime < GraphQL::Schema::Scalar
-      def self.time_precision: () -> Integer
+      def self.time_precision: -> Integer
       def self.time_precision=: (Integer) -> Integer
     end
     class JSON < GraphQL::Schema::Scalar
@@ -164,6 +192,6 @@ module GraphQL
   class Error < StandardError
   end
   class ExecutionError < Error
-    def to_h: () -> Hash[String, untyped]
+    def to_h: -> Hash[String, untyped]
   end
 end

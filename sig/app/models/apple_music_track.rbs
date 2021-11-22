@@ -1,13 +1,17 @@
 class AppleMusicTrack
   def self.create_by_data: (::AppleMusic::Api::Response::track data) -> untyped
-  def self.mapping: (::AppleMusic::Api::Response::track data) -> ::Hash[::Symbol, untyped]
-  def self.mapping_relation: (::AppleMusic::Api::Response::track data) -> ::Hash[::Symbol, untyped]
+  def self.mapping: (
+    ::AppleMusic::Api::Response::track data
+  ) -> ::Hash[::Symbol, untyped]
+  def self.mapping_relation: (
+    ::AppleMusic::Api::Response::track data
+  ) -> ::Hash[::Symbol, untyped]
 
-  def apple_music_playable: () -> bool
+  def apple_music_playable: -> bool
   @artwork_l: ::Artwork?
-  def artwork_l: () -> ::Artwork
+  def artwork_l: -> ::Artwork
   @artwork_m: ::Artwork?
-  def artwork_m: () -> ::Artwork
+  def artwork_m: -> ::Artwork
 
   private
 
