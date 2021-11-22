@@ -8,8 +8,6 @@ module Queries
 
     argument :id, ::String, required: true, description: 'ID'
 
-    def query(id:)
-      ::Album.find_by(id: id)
-    end
+    def query(id:) = ::Album.find_by(id: id)
   end
 end
