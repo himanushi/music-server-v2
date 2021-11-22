@@ -38,6 +38,9 @@ module MusicServer
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    # CSRF 無効
+    config.action_controller.allow_forgery_protection = false
+
     # Apollo Client 対応
     # https://mattboldt.com/2019/06/23/rails-graphql-react-apollo-part-two/
     config.middleware.insert_before(0, ::Rack::Cors) do
