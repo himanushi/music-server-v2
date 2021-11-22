@@ -37,5 +37,18 @@ module MusicServer
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Apollo Client 対応
+    # https://mattboldt.com/2019/06/23/rails-graphql-react-apollo-part-two/
+    config.middleware.insert_before(0, ::Rack::Cors) do
+      allow do
+        if ::Rails.env.production?
+          origins [::ENV['PRODUCTION_APP_URL'], %r{capacitor://localhost}]
+        else
+          origins [%r{http://localhost}, %r{capacitor://localhost}]
+        end
+        resource '*', headers: :any, methods: %i[get post options], credentials: true
+      end
+    end
   end
 end

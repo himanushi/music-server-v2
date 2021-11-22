@@ -11,6 +11,8 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'mysql2', '~> 0.5'
 # App server
 gem 'puma', '~> 5.0'
+# HTTP メソッド許可
+gem 'rack-cors', '~> 1.1.1'
 # GraphQL
 gem 'graphql', '~> 1.12.19'
 # GraphQL GUI
