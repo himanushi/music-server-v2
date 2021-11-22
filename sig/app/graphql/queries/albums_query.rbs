@@ -9,6 +9,10 @@ module Queries
     class AlbumsConditionsInputObject < ::Types::InputObjects::BaseInputObject
     end
 
-    def query: (**untyped) -> ::Query::Result::query
+    def query: (
+      conditions: ::Query::conditions,
+      cursor: ::Query::cursor,
+      sort: ::Query::sort
+    ) -> ::Query::result
   end
 end

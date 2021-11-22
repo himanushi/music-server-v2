@@ -1,8 +1,7 @@
 class Query < ::Types::Objects::BaseObject
-  module Params
-    type params = { :cache? => bool, relation: untyped }
-  end
-  module Result
-    type query = { :cache? => bool, relation: untyped }
-  end
+  type params = { cursor: cursor, sort: sort, conditions: conditions }
+  type cursor = { offset: ::Integer, limit: ::Integer }
+  type sort = { order: ::String, direction: ::String }
+  type conditions = ::Hash[::Symbol, untyped]
+  type result = { :cache? => bool, relation: untyped }
 end
