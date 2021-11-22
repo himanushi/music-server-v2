@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class AlbumsQuery < ::Queries::BaseQuery
+  class AlbumsQuery < ::Queries::BaseListQuery
     description 'アルバム一覧取得'
 
     type [::Types::Objects::AlbumType], null: true
@@ -18,7 +18,7 @@ module Queries
                required: false,
                default_value: ::Queries::AlbumsQuery::AlbumsQueryOrderEnum.values['RELEASE'].value,
                description: '並び順対象'
-      argument :type,
+      argument :direction,
                ::Types::Enums::SortEnum,
                required: false,
                default_value: ::Types::Enums::SortEnum.values['DESC'].value,
@@ -46,6 +46,8 @@ module Queries
              default_value: ::Queries::AlbumsQuery::AlbumsSortInputObject.default_argument_values
     argument :conditions, ::Queries::AlbumsQuery::AlbumsConditionsInputObject, required: false, description: '取得条件'
 
-    def query(**params) = ::Album.generate_relation(params)
+    def list_query(conditions:)
+      ::Album.generate_relation(conditions: conditions)
+    end
   end
 end

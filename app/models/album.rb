@@ -25,6 +25,18 @@ class Album < ::ApplicationRecord
   def service() = apple_music_album
 
   class << self
-    def generate_relation(params); end
+    def generate_relation(conditions:)
+      cache = true
+      conditions = { status: [:active], **conditions }
+      album_relation = ::Album.includes(:apple_music_album)
+
+      # 名前あいまい検索
+      if conditions.key?(:name)
+        name = conditions.delete(:name)
+        album_relation = album_relation.where('apple_music_albums.name like :name', name: "%#{name}%")
+      end
+
+      { cache?: cache, relation: album_relation }
+    end
   end
 end
