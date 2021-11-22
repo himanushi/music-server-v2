@@ -93,7 +93,7 @@ module AppleMusic
         album.tracks =
           album_data['relationships']['tracks']['data'].map do |tracks_data|
             track = ::Track.find_or_initialize_by(isrc: tracks_data['attributes']['isrc'])
-            track.status = ::Album.statuses[album.status]
+            track.status = album.status
 
             # track artists
             tracks_data['relationships']['artists']['data'].map do |artist_data|
