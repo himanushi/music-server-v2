@@ -2,7 +2,7 @@
 
 module Types
   module Objects
-    class ArtworkType < ::Types::Objects::BaseObject
+    class ArtworkObject < ::Types::Objects::BaseObject
       description 'アートワーク'
 
       field :url,    ::String, null: true, description: 'URL'

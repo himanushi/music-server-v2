@@ -2,7 +2,7 @@
 
 module Types
   module Objects
-    class TrackType < ::Types::Objects::BaseObject
+    class TrackObject < ::Types::Objects::BaseObject
       description 'トラック'
 
       field :id,             ::String, null: false, description: 'ID', method: :track_id
@@ -14,8 +14,8 @@ module Types
       field :duration_ms,    ::Integer, null: false, description: '再生時間'
       field :preview_url,    ::String, null: true, description: 'プレビューURL'
       field :popularity,     ::Integer, null: false, description: '人気度'
-      field :artwork_m,      ::Types::Objects::ArtworkType, null: false, description: '中型アートワーク'
-      field :artwork_l,      ::Types::Objects::ArtworkType, null: false, description: '大型アートワーク'
+      field :artwork_m,      ::Types::Objects::ArtworkObject, null: false, description: '中型アートワーク'
+      field :artwork_l,      ::Types::Objects::ArtworkObject, null: false, description: '大型アートワーク'
       field :apple_music_id, ::String, null: false, description: 'Apple Music ID'
       field :apple_music_playable, ::GraphQL::Types::Boolean, null: false, description: 'iTunes 判定'
     end

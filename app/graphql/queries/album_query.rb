@@ -4,7 +4,7 @@ module Queries
   class AlbumQuery < ::Queries::BaseQuery
     description 'アルバム情報取得'
 
-    type ::Types::Objects::AlbumType, null: true
+    type ::Types::Objects::AlbumObject, null: true
 
     argument :id, ::String, required: true, description: 'ID'
 

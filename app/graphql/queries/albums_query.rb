@@ -4,7 +4,7 @@ module Queries
   class AlbumsQuery < ::Queries::BaseListQuery
     description 'アルバム一覧取得'
 
-    type [::Types::Objects::AlbumType], null: true
+    type [::Types::Objects::AlbumObject], null: true
 
     class AlbumsQueryOrderEnum < ::Types::Enums::BaseEnum
       value 'NEW',        value: 'albums.created_at', description: '追加順'
