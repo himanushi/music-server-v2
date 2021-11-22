@@ -1,3 +1,4 @@
 class Album
   def self.statuses: () -> ::Hash[::String, ::Integer]
+  def self.generate_relation: (untyped params) -> ::Query::Result::query
 end

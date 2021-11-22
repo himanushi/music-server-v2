@@ -1,2 +1,14 @@
 class Query < ::Types::Objects::BaseObject
+  module Params
+    type params = {
+      cache?: bool,
+      relation: untyped,
+    }
+  end
+  module Result
+    type query = {
+      cache?: bool,
+      relation: untyped,
+    }
+  end
 end

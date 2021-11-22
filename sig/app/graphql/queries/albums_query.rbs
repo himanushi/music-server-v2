@@ -3,6 +3,12 @@ module Queries
     class AlbumsQueryOrderEnum < ::Types::Enums::BaseEnum
     end
 
-    def query: (**untyped) -> untyped
+    class AlbumsSortInputObject < ::Types::InputObjects::BaseInputObject
+    end
+
+    class AlbumsConditionsInputObject < ::Types::InputObjects::BaseInputObject
+    end
+
+    def query: (**untyped) -> ::Query::Result::query
   end
 end
