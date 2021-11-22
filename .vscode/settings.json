@@ -2,7 +2,7 @@
   // space 可視化
   "editor.renderWhitespace": "boundary",
 
-  //rubocop
+  //linter & formatter
   "emeraldwalk.runonsave": {
     "commands": [
       {
@@ -11,7 +11,7 @@
         "cmd": "rubocop -A '${file}'"
       },
       {
-        "match": "\\.rbs",
+        "match": "\\.rbs$",
         "cmd": "rbprettier --write '${file}'"
       }
     ]
