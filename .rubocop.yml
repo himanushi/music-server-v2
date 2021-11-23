@@ -9,6 +9,10 @@ AllCops:
 Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: false
 
+Lint/NumberConversion:
+  IgnoredMethods:
+    - from_now
+
 Metrics/MethodLength:
   Enabled: false
 
