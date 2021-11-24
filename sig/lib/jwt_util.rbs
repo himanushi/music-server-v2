@@ -1,0 +1,4 @@
+class JwtUtil
+  def self.encode: (untyped object) -> ::String
+  def self.decode: (untyped object) -> ::String
+end

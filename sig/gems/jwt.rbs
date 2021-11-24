@@ -5,4 +5,11 @@ module JWT
   ) ?{
     (*untyped, **untyped) -> untyped
   } -> ::String
+
+  def self.decode: (
+    *untyped,
+    **untyped
+  ) ?{
+    (*untyped, **untyped) -> untyped
+  } -> ::Array[::String]
 end
