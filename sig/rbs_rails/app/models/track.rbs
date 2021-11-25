@@ -136,6 +136,10 @@ class Track < ApplicationRecord
   def albums=: (Album::ActiveRecord_Associations_CollectionProxy | Array[Album]) -> (Album::ActiveRecord_Associations_CollectionProxy | Array[Album])
   def album_ids: () -> Array[Integer]
   def album_ids=: (Array[Integer]) -> Array[Integer]
+  def apple_music_tracks: () -> AppleMusicTrack::ActiveRecord_Associations_CollectionProxy
+  def apple_music_tracks=: (AppleMusicTrack::ActiveRecord_Associations_CollectionProxy | Array[AppleMusicTrack]) -> (AppleMusicTrack::ActiveRecord_Associations_CollectionProxy | Array[AppleMusicTrack])
+  def apple_music_track_ids: () -> Array[Integer]
+  def apple_music_track_ids=: (Array[Integer]) -> Array[Integer]
   def playlist_items: () -> PlaylistItem::ActiveRecord_Associations_CollectionProxy
   def playlist_items=: (PlaylistItem::ActiveRecord_Associations_CollectionProxy | Array[PlaylistItem]) -> (PlaylistItem::ActiveRecord_Associations_CollectionProxy | Array[PlaylistItem])
   def playlist_item_ids: () -> Array[Integer]
