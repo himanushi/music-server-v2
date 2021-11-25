@@ -1,0 +1,5 @@
+class Artist
+  def artwork_l: -> ::Artwork
+  def artwork_m: -> ::Artwork
+  def service_track: -> ::AppleMusicTrack?
+end

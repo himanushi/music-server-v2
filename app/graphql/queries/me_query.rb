@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class MeQuery < BaseQuery
+  class MeQuery < ::Queries::BaseQuery
     description 'カレントユーザー情報取得'
 
     type ::Types::Objects::CurrentUserObject, null: false
