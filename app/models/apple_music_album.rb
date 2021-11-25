@@ -4,7 +4,7 @@ class AppleMusicAlbum < ::ApplicationRecord
   def table_id() = 'amb'
 
   belongs_to :album
-  has_many :apple_music_tracks, -> { order(disc_number: :asc, track_number: :asc) }, dependent: :destroy
+  has_many :apple_music_tracks, dependent: :destroy
 
   class << self
     def create_by_data(data)
