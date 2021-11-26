@@ -8,6 +8,7 @@ class Query < ::Types::Objects::BaseObject
   field :albums,            resolver: ::Queries::AlbumsQuery
   field :playlist,          resolver: ::Queries::PlaylistQuery
   field :playlists,         resolver: ::Queries::PlaylistsQuery
+  field :roles,             resolver: ::Queries::RolesQuery
   field :apple_music_token, resolver: ::Queries::AppleMusicTokenQuery
   field :define_types,      resolver: ::Queries::DefineTypes
 end
