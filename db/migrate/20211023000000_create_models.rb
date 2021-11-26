@@ -211,6 +211,7 @@ class CreateModels < ::ActiveRecord::Migration[6.1]
     add_index(:playlists, :name)
     add_index(:playlists, :popularity)
     add_index(:playlists, :created_at)
+    add_index(:playlists, :updated_at)
 
     create_table(:playlist_items, id: false) do |t|
       t.string(:id, limit: 16, primary_key: true, null: false)

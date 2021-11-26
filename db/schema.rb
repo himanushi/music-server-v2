@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_000000) do
     t.index ["created_at"], name: "index_playlists_on_created_at"
     t.index ["name"], name: "index_playlists_on_name"
     t.index ["popularity"], name: "index_playlists_on_popularity"
+    t.index ["updated_at"], name: "index_playlists_on_updated_at"
     t.index ["user_id"], name: "fk_rails_d67ef1eb45"
   end
 
