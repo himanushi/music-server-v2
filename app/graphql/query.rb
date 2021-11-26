@@ -6,6 +6,7 @@ class Query < ::Types::Objects::BaseObject
   field :artists,           resolver: ::Queries::ArtistsQuery
   field :album,             resolver: ::Queries::AlbumQuery
   field :albums,            resolver: ::Queries::AlbumsQuery
+  field :track,             resolver: ::Queries::TrackQuery
   field :playlist,          resolver: ::Queries::PlaylistQuery
   field :playlists,         resolver: ::Queries::PlaylistsQuery
   field :roles,             resolver: ::Queries::RolesQuery
