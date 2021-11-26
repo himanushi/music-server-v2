@@ -33,7 +33,7 @@ class GraphqlController < ::ApplicationController
   end
 
   def handle_error_in_development(error)
-    json = { error: { message: error.message, backtrace: error.backtrace }, data: { error: '' } }
+    json = { error: { message: error.message, backtrace: error.backtrace }, data: { error: error.message } }
     render(json: json, status: 500)
   end
 end
