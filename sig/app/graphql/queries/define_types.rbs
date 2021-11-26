@@ -1,0 +1,5 @@
+module Queries
+  class DefineTypes < ::Queries::BaseQuery
+    def query: -> untyped
+  end
+end

@@ -1,8 +1,6 @@
 module GraphQL
   class Query
-    class Context
-      def []: (Symbol key) -> untyped
-    end
+    type context = { current_info: ::ApplicationController::current_info }
   end
   class Schema
     interface _Argument
@@ -108,7 +106,7 @@ module GraphQL
     class Object < Member
       extend Member::HasFields
       attr_reader object: untyped
-      attr_reader context: GraphQL::Query::Context
+      attr_reader context: GraphQL::Query::context
     end
     class Resolver
       module HasPayloadType
@@ -129,7 +127,7 @@ module GraphQL
       ) -> void
 
       attr_reader object: untyped
-      attr_reader context: GraphQL::Query::Context
+      attr_reader context: GraphQL::Query::context
     end
     class RelayClassicMutation < Mutation
       def self.input_object_class: (?Class? new_class) -> void

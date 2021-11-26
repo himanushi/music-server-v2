@@ -1,0 +1,6 @@
+class Playlist
+  def self.generate_relation: (
+    conditions: ::Query::conditions,
+    context: ::GraphQL::Query::context
+  ) -> ::Query::result
+end

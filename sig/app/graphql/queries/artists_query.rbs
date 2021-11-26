@@ -1,0 +1,18 @@
+module Queries
+  class ArtistsQuery < ::Queries::BaseListQuery
+    class ArtistsQueryOrderEnum < ::Types::Enums::BaseEnum
+    end
+
+    class ArtistsSortInputObject < ::Types::InputObjects::BaseInputObject
+    end
+
+    class ArtistsConditionsInputObject < ::Types::InputObjects::BaseInputObject
+    end
+
+    def query: (
+      conditions: ::Query::conditions,
+      cursor: ::Query::cursor,
+      sort: ::Query::sort
+    ) -> ::Query::result
+  end
+end

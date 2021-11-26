@@ -1,0 +1,18 @@
+module Queries
+  class PlaylistsQuery < ::Queries::BaseListQuery
+    class PlaylistsQueryOrderEnum < ::Types::Enums::BaseEnum
+    end
+
+    class PlaylistsSortInputObject < ::Types::InputObjects::BaseInputObject
+    end
+
+    class PlaylistsConditionsInputObject < ::Types::InputObjects::BaseInputObject
+    end
+
+    def query: (
+      conditions: ::Query::conditions,
+      cursor: ::Query::cursor,
+      sort: ::Query::sort
+    ) -> ::Query::result
+  end
+end

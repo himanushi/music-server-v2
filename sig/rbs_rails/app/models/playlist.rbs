@@ -120,18 +120,18 @@ class Playlist < ApplicationRecord
   def restore_description!: () -> void
   def clear_description_change: () -> void
 
-  attr_accessor public_type(): Integer
+  attr_accessor public_type(): String
   def public_type_changed?: () -> bool
-  def public_type_change: () -> [ Integer?, Integer? ]
+  def public_type_change: () -> [ String?, String? ]
   def public_type_will_change!: () -> void
-  def public_type_was: () -> Integer?
+  def public_type_was: () -> String?
   def public_type_previously_changed?: () -> bool
-  def public_type_previous_change: () -> Array[Integer?]?
-  def public_type_previously_was: () -> Integer?
-  def public_type_before_last_save: () -> Integer?
-  def public_type_change_to_be_saved: () -> Array[Integer?]?
-  def public_type_in_database: () -> Integer?
-  def saved_change_to_public_type: () -> Array[Integer?]?
+  def public_type_previous_change: () -> Array[String?]?
+  def public_type_previously_was: () -> String?
+  def public_type_before_last_save: () -> String?
+  def public_type_change_to_be_saved: () -> Array[String?]?
+  def public_type_in_database: () -> String?
+  def saved_change_to_public_type: () -> Array[String?]?
   def saved_change_to_public_type?: () -> bool
   def will_save_change_to_public_type?: () -> bool
   def restore_public_type!: () -> void
@@ -193,7 +193,22 @@ class Playlist < ApplicationRecord
   def create_track: (untyped) -> Track
   def create_track!: (untyped) -> Track
 
+  def public_type_non_open!: () -> bool
+  def public_type_non_open?: () -> bool
+  def public_type_open!: () -> bool
+  def public_type_open?: () -> bool
+  def public_type_anonymous_open!: () -> bool
+  def public_type_anonymous_open?: () -> bool
+  def self.public_type_non_open: () -> ActiveRecord_Relation
+  def self.public_type_open: () -> ActiveRecord_Relation
+  def self.public_type_anonymous_open: () -> ActiveRecord_Relation
+
   module GeneratedRelationMethods
+    def public_type_non_open: () -> ActiveRecord_Relation
+
+    def public_type_open: () -> ActiveRecord_Relation
+
+    def public_type_anonymous_open: () -> ActiveRecord_Relation
   end
 
   class ActiveRecord_Relation < ActiveRecord::Relation
