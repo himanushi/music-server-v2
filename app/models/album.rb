@@ -33,11 +33,11 @@ class Album < ::ApplicationRecord
 
       cache = true
       conditions = { status: [:active] }.merge(conditions)
-      album_relation = ::Album.includes(:apple_music_album)
+      relation = ::Album.includes(:apple_music_album)
 
       if conditions.key?(:name)
         name = conditions.delete(:name)
-        album_relation = album_relation.where('apple_music_albums.name like :name', name: "%#{name}%")
+        relation = relation.where('apple_music_albums.name like :name', name: "%#{name}%")
       end
 
       if conditions.key?(:artist_ids)
@@ -45,15 +45,15 @@ class Album < ::ApplicationRecord
         album_ids = ::Album.includes(:artists).where(artists: { id: artist_ids }).ids
         track_ids = ::Track.includes(:artists).where(artists: { id: artist_ids }).ids
         album_ids += ::Album.includes(:tracks).where(tracks: { id: track_ids }).ids
-        album_relation = album_relation.where(id: album_ids)
+        relation = relation.where(id: album_ids)
       end
 
       if conditions.key?(:track_ids)
         track_ids = conditions.delete(:track_ids)
-        album_relation = album_relation.includes(:tracks).where(tracks: { id: track_ids })
+        relation = relation.includes(:tracks).where(tracks: { id: track_ids })
       end
 
-      { cache?: cache, relation: album_relation }
+      { cache?: cache, relation: relation }
     end
   end
 end

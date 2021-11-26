@@ -27,7 +27,6 @@ module Queries
 
     class AlbumsConditionsInputObject < ::Types::InputObjects::BaseInputObject
       argument :artist_ids, [::String], required: false, description: 'アーティストID'
-      argument :album_ids,  [::String], required: false, description: 'アルバムID'
       argument :track_ids,  [::String], required: false, description: 'トラックID'
       argument :name,       ::String, required: false, description: 'アルバム名(あいまい検索)'
       argument :statuses,   [::Types::Enums::StatusEnum], required: false, description: '表示ステータス'

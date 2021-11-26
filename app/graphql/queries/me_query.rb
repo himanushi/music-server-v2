@@ -6,8 +6,6 @@ module Queries
 
     type ::Types::Objects::CurrentUserObject, null: false
 
-    def query
-      context[:current_info][:user]
-    end
+    def query() = context[:current_info][:user]
   end
 end

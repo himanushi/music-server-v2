@@ -12,22 +12,55 @@ class Artist < ::ApplicationRecord
 
   enum status: { pending: 0, active: 1, ignore: 2 }
 
-  def artwork_l
-    return ::Artwork.new unless (track = service_track)
+  class << self
+    def generate_relation(conditions:)
+      # @type var album_ids: ::Array[::String]
+      # @type var artist_ids: ::Array[::String]
+      # @type var track_ids: ::Array[::String]
+      # @type var name: ::String
 
-    track.artwork_l
+      cache = true
+      conditions = { status: [:active] }.merge(conditions)
+      relation = ::Artist.includes(albums: :apple_music_album)
+
+      if conditions.key?(:name)
+        name = conditions.delete(:name)
+        relation = relation.where('artists.name like :name', name: "%#{name}%")
+      end
+
+      if conditions.key?(:album_ids)
+        albums = ::Album.includes(:artists).includes(:tracks).where(id: conditions.delete(:album_ids))
+        artist_ids = albums.map { |a| a.artists.ids }
+                           .flatten
+        artist_ids += albums.map { |a| a.tracks.includes(:artists).map { |t| t.artists.ids } }
+                            .flatten
+        relation = relation.where(id: artist_ids)
+      end
+
+      if conditions.key?(:track_ids)
+        relation = relation.includes(:tracks).where(tracks: { id: conditions.delete(:track_ids) })
+      end
+
+      { cache?: cache, relation: relation }
+    end
+  end
+
+  def artwork_l
+    return ::Artwork.new unless (album = service_album)
+
+    album.artwork_l
   end
 
   def artwork_m
-    return ::Artwork.new unless (track = service_track)
+    return ::Artwork.new unless (album = service_album)
 
-    track.artwork_m
+    album.artwork_m
   end
 
-  def service_track
-    return unless (track = tracks.first)
-    return unless (apple_music_track = track.apple_music_tracks.first)
+  def service_album
+    return unless (album = albums.first)
+    return unless (apple_music_album = album.apple_music_album)
 
-    apple_music_track
+    apple_music_album
   end
 end
