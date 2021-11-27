@@ -9,7 +9,7 @@ module Queries
       cursor: ::Query::cursor,
       sort: ::Query::sort
     ) -> untyped
-    def list_query: (conditions: ::Query::conditions) -> untyped
+    def list_query: (conditions: ::Query::conditions) -> ::Query::result
     def order: (
       untyped relation,
       cursor: ::Query::cursor,

@@ -8,11 +8,5 @@ module Queries
 
     class ArtistsConditionsInputObject < ::Types::InputObjects::BaseInputObject
     end
-
-    def query: (
-      conditions: ::Query::conditions,
-      cursor: ::Query::cursor,
-      sort: ::Query::sort
-    ) -> ::Query::result
   end
 end
