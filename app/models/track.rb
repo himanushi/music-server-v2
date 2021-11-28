@@ -13,4 +13,24 @@ class Track < ::ApplicationRecord
   has_many :favorites, as: :favorable, dependent: :destroy
 
   enum status: { pending: 0, active: 1, ignore: 2 }
+
+  delegate :apple_music_id, :apple_music_playable, :name, :artwork_m, :artwork_l, to: :service
+
+  def service() = apple_music_tracks.first
+
+  class << self
+    def generate_relation(conditions:)
+      cache = true
+      conditions = { status: [:active] }.merge(conditions)
+      relation = ::Track.includes(:apple_music_tracks)
+
+      # ランダム取得
+      if conditions.delete(:random)
+        cache = false
+        relation = relation.order('RAND()')
+      end
+
+      { cache?: cache, relation: relation }
+    end
+  end
 end

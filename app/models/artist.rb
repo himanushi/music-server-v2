@@ -16,7 +16,6 @@ class Artist < ::ApplicationRecord
     def generate_relation(conditions:)
       # @type var album_ids: ::Array[::String]
       # @type var artist_ids: ::Array[::String]
-      # @type var track_ids: ::Array[::String]
       # @type var name: ::String
 
       cache = true

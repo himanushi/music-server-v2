@@ -25,6 +25,7 @@ class Playlist < ::ApplicationRecord
       end
 
       if conditions.key?(:name)
+        # @type var name: ::String
         name = conditions.delete(:name)
         relation = relation.where('playlists.name like :name', name: "%#{name}%")
       end

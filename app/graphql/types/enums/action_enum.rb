@@ -3,8 +3,11 @@
 module Types
   module Enums
     class ActionEnum < ::Types::Enums::BaseEnum
-      ::AllowedAction::ALL_ACTIONS.each do |action|
-        value action, value: action
+      # なぜか db:seed が実行できないため
+      if ::Rails.const_defined?('Console') || ::Rails.const_defined?('Server')
+        ::AllowedAction::ALL_ACTIONS.each do |action|
+          value action, value: action
+        end
       end
     end
   end

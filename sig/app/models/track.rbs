@@ -1,0 +1,7 @@
+class Track
+  def self.generate_relation: (
+    conditions: ::Query::conditions
+  ) -> ::Query::result
+
+  def service: -> ::AppleMusicTrack?
+end
