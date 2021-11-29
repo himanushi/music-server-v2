@@ -24,10 +24,17 @@ class Track < ::ApplicationRecord
       conditions = { status: [:active] }.merge(conditions)
       relation = ::Track.includes(:apple_music_tracks)
 
-      # ランダム取得
       if conditions.delete(:random)
         cache = false
         relation = relation.order('RAND()')
+      end
+
+      if conditions.key?(:name)
+        # @type var name: ::String
+        name = conditions.delete(:name)
+        # @type var track_ids: ::Array[::String]
+        track_ids = ::AppleMusicTrack.where('name like :name', { name: "%#{name}%" }).select(:track_id).pluck(:track_id)
+        relation = relation.where(id: track_ids.uniq)
       end
 
       { cache?: cache, relation: relation }
