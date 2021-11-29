@@ -19,15 +19,18 @@ class Track < ::ApplicationRecord
   def service() = apple_music_tracks.first
 
   class << self
-    def generate_relation(conditions:)
+    def cache?(conditions:)
       cache = true
+      cache = false if conditions.key?(:favorite)
+      cache = false if conditions.key?(:random)
+      cache
+    end
+
+    def generate_relation(conditions:)
       conditions = { status: [:active] }.merge(conditions)
       relation = ::Track.includes(:apple_music_tracks)
 
-      if conditions.delete(:random)
-        cache = false
-        relation = relation.order('RAND()')
-      end
+      relation = relation.order('RAND()') if conditions.delete(:random)
 
       if conditions.key?(:name)
         # @type var name: ::String
@@ -37,7 +40,7 @@ class Track < ::ApplicationRecord
         relation = relation.where(id: track_ids.uniq)
       end
 
-      { cache?: cache, relation: relation }
+      relation
     end
   end
 end

@@ -25,13 +25,18 @@ class Album < ::ApplicationRecord
   def service() = apple_music_album
 
   class << self
+    def cache?(conditions:)
+      cache = true
+      cache = false if conditions.key?(:favorite)
+      cache
+    end
+
     def generate_relation(conditions:)
       # @type var album_ids: ::Array[::String]
       # @type var artist_ids: ::Array[::String]
       # @type var track_ids: ::Array[::String]
       # @type var name: ::String
 
-      cache = true
       conditions = { status: [:active] }.merge(conditions)
       relation = ::Album.includes(:apple_music_album)
 
@@ -53,7 +58,7 @@ class Album < ::ApplicationRecord
         relation = relation.includes(:tracks).where(tracks: { id: track_ids })
       end
 
-      { cache?: cache, relation: relation }
+      relation
     end
   end
 end

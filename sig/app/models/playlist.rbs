@@ -1,6 +1,7 @@
 class Playlist
+  def self.cache?: (conditions: ::Query::conditions) -> bool
   def self.generate_relation: (
     conditions: ::Query::conditions,
     context: ::GraphQL::Query::context
-  ) -> ::Query::result
+  ) -> untyped
 end

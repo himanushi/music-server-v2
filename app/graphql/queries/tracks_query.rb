@@ -43,6 +43,6 @@ module Queries
              default_value: ::Queries::TracksQuery::TracksSortInputObject.default_argument_values
     argument :conditions, ::Queries::TracksQuery::TracksConditionsInputObject, required: false, description: '取得条件'
 
-    def list_query(conditions:) = ::Track.generate_relation(conditions: conditions)
+    def query_class() = ::Track
   end
 end

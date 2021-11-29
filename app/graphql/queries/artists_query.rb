@@ -45,6 +45,6 @@ module Queries
              default_value: ::Queries::ArtistsQuery::ArtistsSortInputObject.default_argument_values
     argument :conditions, ::Queries::ArtistsQuery::ArtistsConditionsInputObject, required: false, description: '取得条件'
 
-    def list_query(conditions:) = ::Artist.generate_relation(conditions: conditions)
+    def query_class() = ::Artist
   end
 end

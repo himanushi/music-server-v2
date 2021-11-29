@@ -13,12 +13,17 @@ class Artist < ::ApplicationRecord
   enum status: { pending: 0, active: 1, ignore: 2 }
 
   class << self
+    def cache?(conditions:)
+      cache = true
+      cache = false if conditions.key?(:favorite)
+      cache
+    end
+
     def generate_relation(conditions:)
       # @type var album_ids: ::Array[::String]
       # @type var artist_ids: ::Array[::String]
       # @type var name: ::String
 
-      cache = true
       conditions = { status: [:active] }.merge(conditions)
       relation = ::Artist.includes(albums: :apple_music_album)
 
@@ -40,7 +45,7 @@ class Artist < ::ApplicationRecord
         relation = relation.includes(:tracks).where(tracks: { id: conditions.delete(:track_ids) })
       end
 
-      { cache?: cache, relation: relation }
+      relation
     end
   end
 

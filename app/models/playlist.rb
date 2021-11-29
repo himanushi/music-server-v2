@@ -14,8 +14,13 @@ class Playlist < ::ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
 
   class << self
-    def generate_relation(conditions:, context:)
+    def cache?(conditions:)
       cache = true
+      cache = false if conditions.key?(:favorite)
+      cache
+    end
+
+    def generate_relation(conditions:, context:)
       conditions = { public_type: %i[open anonymous_open] }.merge(conditions)
       relation = ::Playlist.includes(:user).includes(:track)
 
@@ -30,7 +35,7 @@ class Playlist < ::ApplicationRecord
         relation = relation.where('playlists.name like :name', name: "%#{name}%")
       end
 
-      { cache?: cache, relation: relation }
+      relation
     end
   end
 end

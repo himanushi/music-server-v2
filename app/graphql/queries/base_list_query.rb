@@ -7,19 +7,19 @@ module Queries
       cache_key = params.transform_values { |v| v.to_h }
                         .to_s
 
+      return ::Rails.cache.read(cache_key) if cache?(conditions: conditions) && ::Rails.cache.exist?(cache_key)
+
       result = list_query(conditions: conditions)
+      relation = order(result, sort: sort, cursor: cursor)
 
-      cache = result[:cache?]
-      relation = order(result[:relation], sort: sort, cursor: cursor)
-
-      if cache && ::Rails.cache.exist?(cache_key)
-        ::Rails.cache.read(cache_key)
-      else
-        loaded_result = relation.load
-        ::Rails.cache.write(cache_key, loaded_result) if cache
-        loaded_result
-      end
+      loaded_result = relation.load
+      ::Rails.cache.write(cache_key, loaded_result) if cache?(conditions: conditions)
+      loaded_result
     end
+
+    def list_query(conditions:) = query_class.generate_relation(conditions: conditions)
+
+    def cache?(conditions:) = query_class.cache?(conditions: conditions)
 
     def order(relation, sort:, cursor:)
       relation.order(

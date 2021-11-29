@@ -46,6 +46,6 @@ module Queries
              required: false,
              description: '取得条件'
 
-    def list_query(conditions:) = ::Playlist.generate_relation(conditions: conditions, context: context)
+    def query_class() = ::Playlist
   end
 end
