@@ -5,7 +5,8 @@ class GraphqlController < ::ApplicationController
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    result = ::ServerSchema.execute(query, variables: variables, operation_name: operation_name)
+    context = { current_info: current_info }
+    result = ::ServerSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render(json: result)
   rescue ::StandardError => e
     raise(e) unless ::Rails.env.development?

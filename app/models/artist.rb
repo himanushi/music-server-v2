@@ -19,7 +19,7 @@ class Artist < ::ApplicationRecord
       cache
     end
 
-    def generate_relation(conditions:)
+    def generate_relation(conditions:, context:)
       # @type var album_ids: ::Array[::String]
       # @type var artist_ids: ::Array[::String]
       # @type var name: ::String
@@ -43,6 +43,10 @@ class Artist < ::ApplicationRecord
 
       if conditions.key?(:track_ids)
         relation = relation.includes(:tracks).where(tracks: { id: conditions.delete(:track_ids) })
+      end
+
+      if conditions.delete(:favorite)
+        relation = relation.joins(:favorites).where(favorites: { user_id: context[:current_info][:user].id })
       end
 
       relation

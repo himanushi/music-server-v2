@@ -35,6 +35,10 @@ class Playlist < ::ApplicationRecord
         relation = relation.where('playlists.name like :name', name: "%#{name}%")
       end
 
+      if conditions.delete(:favorite)
+        relation = relation.joins(:favorites).where(favorites: { user_id: context[:current_info][:user].id })
+      end
+
       relation
     end
   end

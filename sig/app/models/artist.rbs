@@ -1,6 +1,9 @@
 class Artist
   def self.cache?: (conditions: ::Query::conditions) -> bool
-  def self.generate_relation: (conditions: ::Query::conditions) -> untyped
+  def self.generate_relation: (
+    conditions: ::Query::conditions,
+    context: ::GraphQL::Query::context
+  ) -> untyped
   def artwork_l: -> ::Artwork
   def artwork_m: -> ::Artwork
   def service_album: -> ::AppleMusicAlbum?

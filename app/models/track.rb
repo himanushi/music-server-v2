@@ -26,7 +26,7 @@ class Track < ::ApplicationRecord
       cache
     end
 
-    def generate_relation(conditions:)
+    def generate_relation(conditions:, context:)
       conditions = { status: [:active] }.merge(conditions)
       relation = ::Track.includes(:apple_music_tracks)
 
@@ -38,6 +38,10 @@ class Track < ::ApplicationRecord
         # @type var track_ids: ::Array[::String]
         track_ids = ::AppleMusicTrack.where('name like :name', { name: "%#{name}%" }).select(:track_id).pluck(:track_id)
         relation = relation.where(id: track_ids.uniq)
+      end
+
+      if conditions.delete(:favorite)
+        relation = relation.joins(:favorites).where(favorites: { user_id: context[:current_info][:user].id })
       end
 
       relation

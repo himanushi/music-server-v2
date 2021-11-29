@@ -17,7 +17,7 @@ module Queries
       loaded_result
     end
 
-    def list_query(conditions:) = query_class.generate_relation(conditions: conditions)
+    def list_query(conditions:) = query_class.generate_relation(conditions: conditions, context: context)
 
     def cache?(conditions:) = query_class.cache?(conditions: conditions)
 
