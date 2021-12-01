@@ -1,0 +1,7 @@
+module Mutations
+  class BaseMutation < ::GraphQL::Schema::RelayClassicMutation
+    def use_recaptcha?: -> bool
+    def mutate: (**untyped) -> bool
+    def resolve: (**untyped) -> untyped
+  end
+end
