@@ -190,6 +190,8 @@ module GraphQL
   class Error < StandardError
   end
   class ExecutionError < Error
+    type extensions = { code: ::String, path: ::String? }
+    def initialize: (String message, extensions: extensions) -> void
     def to_h: -> Hash[String, untyped]
   end
 end
