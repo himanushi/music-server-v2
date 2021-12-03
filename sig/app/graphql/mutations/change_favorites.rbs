@@ -1,0 +1,11 @@
+module Mutations
+  class ChangeFavorites < ::Mutations::BaseMutation
+    def mutate: (
+      favorite: bool,
+      ?artist_ids: ::Array[::String],
+      ?album_ids: ::Array[::String],
+      ?track_ids: ::Array[::String],
+      ?playlist_ids: ::Array[::String]
+    ) -> { current_user: ::User }
+  end
+end
