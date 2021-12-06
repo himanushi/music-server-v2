@@ -16,9 +16,9 @@ module Mutations
       # @type var action_name: ::String
       action_name = self.class.name&.demodulize&.camelize(:lower)
 
-      unless context[:current_info][:user].can?(action_name)
-        raise(::GraphQL::ExecutionError.new('権限がありません', extensions: { code: 'UNAUTHORIZED' }))
-      end
+      # unless context[:current_info][:user].can?(action_name)
+      #   raise(::GraphQL::ExecutionError.new('権限がありません', extensions: { code: 'UNAUTHORIZED' }))
+      # end
 
       begin
         mutate(**args)
