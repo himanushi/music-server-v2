@@ -6,7 +6,7 @@ module Mutations
 
     argument :playlist_id, ::String, required: false
 
-    field :result, ::GraphQL::Types::Boolean, null: true, description: '削除結果'
+    field :result, ::GraphQL::Types::Boolean, null: true
 
     def mutate(playlist_id:)
       ::Playlist.validate_author!(playlist_id, context[:current_info][:user].id) if playlist_id

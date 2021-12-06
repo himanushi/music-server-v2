@@ -51,6 +51,10 @@ class Artist < ::ApplicationRecord
 
       relation
     end
+
+    def all_pending_to_ignore
+      where(status: :pending).update_all(status: :ignore)
+    end
   end
 
   def artwork_l

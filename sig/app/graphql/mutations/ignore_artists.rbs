@@ -1,0 +1,5 @@
+module Mutations
+  class IgnoreArtists < ::Mutations::BaseMutation
+    def mutate: -> { result: true }
+  end
+end

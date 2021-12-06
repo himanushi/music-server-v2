@@ -32,13 +32,15 @@ class Album < ::ApplicationRecord
 
   def force_ignore
     ::ActiveRecord::Base.transaction do
-      ::IgnoreContent.create!(
-        music_service_id: apple_music_album&.apple_music_id,
-        title: 'Force ignore Album',
-        reason: '除外対象のアルバムのため'
-      )
-      reload
-      destroy
+      if (am_album = apple_music_album)
+        ::IgnoreContent.create!(
+          music_service_id: am_album.apple_music_id,
+          title: 'force ignore album',
+          reason: '除外対象のアルバムのため'
+        )
+        reload
+        destroy
+      end
     end
   end
 
@@ -81,6 +83,12 @@ class Album < ::ApplicationRecord
       end
 
       relation
+    end
+
+    def all_pending_to_ignore
+      ::ActiveRecord::Base.transaction do
+        where(status: :pending).each { |album| album.ignore! }
+      end
     end
   end
 end
