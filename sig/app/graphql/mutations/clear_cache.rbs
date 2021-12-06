@@ -1,0 +1,5 @@
+module Mutations
+  class ClearCache < ::Mutations::BaseMutation
+    def mutate: -> { results: ::Array[::String] }
+  end
+end
