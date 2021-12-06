@@ -5,4 +5,5 @@ class Album
     conditions: ::Query::conditions,
     context: ::GraphQL::Query::context
   ) -> untyped
+  def sync_tracks_status: -> untyped
 end
