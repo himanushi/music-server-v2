@@ -6,4 +6,5 @@ class Album
     context: ::GraphQL::Query::context
   ) -> untyped
   def sync_tracks_status: -> untyped
+  def force_ignore: -> untyped
 end

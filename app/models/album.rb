@@ -30,6 +30,18 @@ class Album < ::ApplicationRecord
 
   def service() = apple_music_album
 
+  def force_ignore
+    ::ActiveRecord::Base.transaction do
+      ::IgnoreContent.create!(
+        music_service_id: apple_music_album&.apple_music_id,
+        title: 'Force ignore Album',
+        reason: '除外対象のアルバムのため'
+      )
+      reload
+      destroy
+    end
+  end
+
   class << self
     def cache?(conditions:)
       cache = true
