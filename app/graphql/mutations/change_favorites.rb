@@ -17,16 +17,16 @@ module Mutations
     field :current_user, ::Types::Objects::CurrentUserObject, null: true, description: '更新されたカレントユーザー'
 
     def mutate(favorite:, artist_ids: [], album_ids: [], track_ids: [], playlist_ids: [])
-      artists = ::Artist.where(id: artist_ids)
-      albums  = ::Album.where(id: album_ids)
-      tracks  = ::Track.where(id: track_ids)
-      playlists = ::Playlist.where(id: playlist_ids)
+      artists = ::Artist.where(id: artist_ids).to_a
+      albums  = ::Album.where(id: album_ids).to_a
+      tracks  = ::Track.where(id: track_ids).to_a
+      playlists = ::Playlist.where(id: playlist_ids).to_a
 
-      # if favorite
-      #   ::Favorite.register(artists + albums + tracks + playlists, context[:current_info][:user])
-      # else
-      #   ::Favorite.unregister(artists + albums + tracks + playlists, context[:current_info][:user])
-      # end
+      if favorite
+        ::Favorite.register(artists + albums + tracks + playlists, context[:current_info][:user])
+      else
+        ::Favorite.unregister(artists + albums + tracks + playlists, context[:current_info][:user])
+      end
 
       {
         current_user: context[:current_info][:user].reload

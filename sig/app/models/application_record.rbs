@@ -7,4 +7,11 @@ class ApplicationRecord < ::ActiveRecord::Base
   ) ?{
     (instance, **untyped) -> untyped
   } -> instance
+
+  def self.find_or_create_by: (
+    *untyped,
+    **untyped
+  ) ?{
+    (instance, **untyped) -> untyped
+  } -> instance
 end
