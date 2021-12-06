@@ -1,0 +1,5 @@
+module Mutations
+  class DeletePlaylist < ::Mutations::BaseMutation
+    def mutate: (playlist_id: ::String) -> { result: true }
+  end
+end

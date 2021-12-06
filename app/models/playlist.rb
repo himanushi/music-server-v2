@@ -14,16 +14,15 @@ class Playlist < ::ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
 
   class << self
-    def validate_track_ids(track_ids)
+    def validate_track_ids!(track_ids)
       # active のみの曲を指定していたが整合性が合わないようなのでDBにあればとりあえずok
-      ::Track.select(:id).find(track_ids)
+      ::Track.find(track_ids)
+
       true
-    rescue ::StandardError
-      false
     end
 
     def validate_author!(playlist_id, user_id)
-      raise(::StandardError, 'エラー : 編集権限がありません') unless find(playlist_id).user_id == user_id
+      raise(::StandardError, '編集権限がありません') unless find(playlist_id).user_id == user_id
 
       true
     end
@@ -58,7 +57,7 @@ class Playlist < ::ApplicationRecord
   end
 
   def add_items(track_ids)
-    self.class.validate_track_ids(track_ids)
+    self.class.validate_track_ids!(track_ids)
 
     track_number = (playlist_items.order(:track_number).last&.track_number || 0) + 1
 

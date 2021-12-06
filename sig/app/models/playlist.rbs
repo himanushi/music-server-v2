@@ -5,7 +5,7 @@ class Playlist
     context: ::GraphQL::Query::context
   ) -> untyped
   def self.validate_author!: (::String playlist_id, ::String user_id) -> bool
-  def self.validate_track_ids: (::Array[::String] track_ids) -> bool
+  def self.validate_track_ids!: (::Array[::String] track_ids) -> untyped
 
   def add_items: (::Array[::String] track_ids) -> instance
 end
