@@ -1,0 +1,5 @@
+module Mutations
+  class Logout < ::Mutations::BaseMutation
+    def mutate: -> { current_user: ::User }
+  end
+end

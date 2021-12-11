@@ -2,6 +2,7 @@
 
 class Mutation < ::Types::Objects::BaseObject
   field :login, mutation: ::Mutations::Login
+  field :logout, mutation: ::Mutations::Logout
   field :change_favorites, mutation: ::Mutations::ChangeFavorites
   field :change_artist_status, mutation: ::Mutations::ChangeArtistStatus
   field :change_album_status, mutation: ::Mutations::ChangeAlbumStatus
