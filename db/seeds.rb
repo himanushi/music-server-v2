@@ -20,7 +20,8 @@
   end
 
   password = "#{::SecureRandom.hex(3)}aA1"
+  username = ::SecureRandom.hex(3)
 
-  puts "/login [username: admin,  password: #{password}]"
-  ::User.create!(name: 'admin', username: 'admin', role: ::Role.find_by!(name: 'admin'), password: password)
+  puts "/login [username: #{username},  password: #{password}]"
+  ::User.create!(name: 'admin', username: username, role: ::Role.find_by!(name: 'admin'), password: password)
 end
