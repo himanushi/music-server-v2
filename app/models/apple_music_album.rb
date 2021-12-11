@@ -23,12 +23,14 @@ class AppleMusicAlbum < ::ApplicationRecord
       attrs = data['attributes']
       artwork = attrs['artwork']
 
+      release_date = ::Convert.to_time(attrs['releaseDate'])
+
       {
         apple_music_id: data['id'],
         name: attrs['name'],
         playable: attrs['playParams'].present?,
         upc: attrs['upc'].upcase,
-        release_date: attrs['releaseDate'],
+        release_date: release_date,
         total_tracks: attrs['trackCount'],
         record_label: attrs['recordLabel'],
         copyright: attrs['copyright'],
@@ -41,6 +43,7 @@ class AppleMusicAlbum < ::ApplicationRecord
     def mapping_relation(data)
       tracks_data = data['relationships']['tracks']['data']
 
+      # @type var apple_music_tracks: ::Array[::AppleMusicTrack]
       apple_music_tracks =
         tracks_data.map do |track_data|
           ::AppleMusicTrack.create_by_data(track_data)

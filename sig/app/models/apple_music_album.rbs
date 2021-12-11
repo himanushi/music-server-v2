@@ -4,7 +4,19 @@ class AppleMusicAlbum
   ) -> instance
   def self.mapping: (
     ::AppleMusic::Api::Response::full_album data
-  ) -> ::Hash[::Symbol, untyped]
+  ) -> {
+    apple_music_id: ::String,
+    name: ::String,
+    playable: bool,
+    upc: ::String,
+    release_date: ActiveSupport::TimeWithZone,
+    total_tracks: ::Integer,
+    record_label: ::String,
+    copyright: ::String,
+    artwork_url: ::String,
+    artwork_width: ::Integer,
+    artwork_height: ::Integer
+  }
   def self.mapping_relation: (
     ::AppleMusic::Api::Response::full_album data
   ) -> ::Hash[::Symbol, untyped]

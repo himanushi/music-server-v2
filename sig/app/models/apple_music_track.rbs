@@ -2,7 +2,20 @@ class AppleMusicTrack
   def self.create_by_data: (::AppleMusic::Api::Response::track data) -> untyped
   def self.mapping: (
     ::AppleMusic::Api::Response::track data
-  ) -> ::Hash[::Symbol, untyped]
+  ) -> {
+    apple_music_id: ::String,
+    name: ::String,
+    playable: bool,
+    isrc: ::String,
+    disc_number: ::Integer,
+    track_number: ::Integer,
+    has_lyrics: bool,
+    duration_ms: ::Integer,
+    preview_url: ::String?,
+    artwork_url: ::String,
+    artwork_width: ::Integer,
+    artwork_height: ::Integer
+  }
   def self.mapping_relation: (
     ::AppleMusic::Api::Response::track data
   ) -> ::Hash[::Symbol, untyped]
