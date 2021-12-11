@@ -1,0 +1,10 @@
+module Mutations
+  class Signup < ::Mutations::BaseMutation
+    def mutate: (
+      name: ::String,
+      username: ::String,
+      new_password: ::String,
+      new_password_confirmation: ::String
+    ) -> { current_user: ::User }
+  end
+end
