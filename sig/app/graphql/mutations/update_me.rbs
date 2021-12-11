@@ -1,0 +1,5 @@
+module Mutations
+  class UpdateMe < ::Mutations::BaseMutation
+    def mutate: (name: ::String) -> { current_user: ::User }
+  end
+end
