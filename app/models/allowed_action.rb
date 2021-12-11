@@ -13,7 +13,10 @@ class AllowedAction < ::ApplicationRecord
   CONSOLE_ACTIONS = %w[graphiql console].freeze
   public_constant :CONSOLE_ACTIONS
 
-  ALL_ACTIONS = ::AllowedAction::MUTATION_ACTIONS + ::AllowedAction::DEFAULT_ACTIONS + ::AllowedAction::CONSOLE_ACTIONS
+  ALL_ACTIONS = (
+    ::AllowedAction::MUTATION_ACTIONS + ::AllowedAction::DEFAULT_ACTIONS + ::AllowedAction::CONSOLE_ACTIONS
+  ).uniq.freeze
+
   public_constant :ALL_ACTIONS
 
   belongs_to :role

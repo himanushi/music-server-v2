@@ -1,0 +1,8 @@
+module Mutations
+  class Login < ::Mutations::BaseMutation
+    def mutate: (
+      username: ::String,
+      current_password: ::String
+    ) -> { current_user: ::User }
+  end
+end

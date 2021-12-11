@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Mutation < ::Types::Objects::BaseObject
+  field :login, mutation: ::Mutations::Login
   field :change_favorites, mutation: ::Mutations::ChangeFavorites
   field :change_artist_status, mutation: ::Mutations::ChangeArtistStatus
   field :change_album_status, mutation: ::Mutations::ChangeAlbumStatus

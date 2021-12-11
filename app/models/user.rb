@@ -42,6 +42,12 @@ class User < ::ApplicationRecord
     end
   end
 
+  def create_session
+    session = ::Session.new
+    sessions << session
+    session
+  end
+
   def can?(action_name)
     raise(::StandardError, '指定されたアクションは存在しません') unless ::AllowedAction::ALL_ACTIONS.include?(action_name)
 
