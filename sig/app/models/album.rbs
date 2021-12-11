@@ -8,4 +8,5 @@ class Album
   ) -> untyped
   def sync_tracks_status: -> untyped
   def force_ignore: -> untyped
+  def update_services: -> ::Album
 end

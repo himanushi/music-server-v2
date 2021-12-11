@@ -44,6 +44,14 @@ class Album < ::ApplicationRecord
     end
   end
 
+  def update_services
+    return self unless (am_album = apple_music_album)
+
+    ::AppleMusic::Album.create_full(am_album.apple_music_id, force: true)
+
+    self
+  end
+
   class << self
     def cache?(conditions:)
       cache = true
