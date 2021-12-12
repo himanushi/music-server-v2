@@ -6,6 +6,14 @@ class Playlist
   ) -> untyped
   def self.validate_author!: (::String playlist_id, ::String user_id) -> bool
   def self.validate_track_ids!: (::Array[::String] track_ids) -> untyped
+  def self.create_or_update: (
+    id: ::String?,
+    user_id: ::String,
+    name: ::String,
+    description: ::String,
+    public_type: ::String,
+    track_ids: ::Array[::String]
+  ) -> ::Playlist
 
   def add_items: (::Array[::String] track_ids) -> instance
 end

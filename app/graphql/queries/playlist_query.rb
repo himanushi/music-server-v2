@@ -9,7 +9,7 @@ module Queries
     argument :id, ::String, required: true, description: 'プレイリストID'
 
     def query(id:)
-      playlist = ::Playlist.includes(:user).includes(:tracks).find_by(id: id)
+      playlist = ::Playlist.includes(:user, :track).find_by(id: id)
 
       if playlist && (playlist.user == context[:current_info][:user] || %w[
         open

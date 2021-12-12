@@ -27,6 +27,47 @@ class Playlist < ::ApplicationRecord
       true
     end
 
+    def create_or_update(id:, user_id:, name:, description:, public_type:, track_ids:)
+      validate_track_ids!(track_ids) if track_ids.present?
+
+      playlist =
+        if id
+          pl = find(id)
+          pl.track_id = track_ids.first
+          pl.user_id = user_id
+          pl.name = name
+          pl.description = description
+          pl.public_type = public_type
+          pl
+        else
+          new(
+            track_id: track_ids.first,
+            user_id: user_id,
+            name: name,
+            description: description,
+            public_type: public_type
+          )
+        end
+
+      ::ActiveRecord::Base.transaction do
+        playlist.playlist_items.destroy
+
+        if track_ids.present?
+          items =
+            track_ids.map.with_index(1) do |track_id, index|
+              ::PlaylistItem.new(track_id: track_id, track_number: index)
+            end
+          playlist.playlist_items = items
+        else
+          playlist.playlist_items.delete_all
+        end
+
+        playlist.save!
+      end
+
+      playlist
+    end
+
     def cache?(conditions:)
       cache = true
       cache = false if conditions.key?(:favorite)
