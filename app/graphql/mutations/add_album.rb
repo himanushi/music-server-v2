@@ -2,7 +2,7 @@
 
 module Mutations
   class AddAlbum < ::Mutations::BaseMutation
-    description 'アルバムを最新の状態にする'
+    description 'アルバムを追加する'
 
     argument :apple_music_id, ::String, required: true, description: 'Apple Music か iTunes のアルバムを登録'
 
