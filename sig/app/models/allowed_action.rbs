@@ -1,7 +1,5 @@
 class AllowedAction < ::ApplicationRecord
-  MUTATION_ACTIONS: ::Array[::String]
-  QUERY_ACTIONS: ::Array[::String]
-  CONSOLE_ACTIONS: ::Array[::String]
-  DEFAULT_ACTIONS: ::Array[::String]
-  ALL_ACTIONS: ::Array[::String]
+  def self.default_actions: -> ::Array[::String]
+  def self.console_actions: -> ::Array[::String]
+  def self.all_actions: -> ::Array[::String]
 end

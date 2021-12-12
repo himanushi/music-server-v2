@@ -17,5 +17,7 @@ class Mutation < ::Types::Objects::BaseObject
   field :upsert_playlist, mutation: ::Mutations::UpsertPlaylist
   field :add_playlist_items, mutation: ::Mutations::AddPlaylistItems
   field :delete_playlist, mutation: ::Mutations::DeletePlaylist
+  field :add_role, mutation: ::Mutations::AddRole
+  field :update_role, mutation: ::Mutations::UpdateRole
   field :clear_cache, mutation: ::Mutations::ClearCache
 end
