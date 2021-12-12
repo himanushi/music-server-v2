@@ -22,6 +22,9 @@ Metrics/AbcSize:
 Metrics/CyclomaticComplexity:
   Enabled: false
 
+Metrics/ParameterLists:
+  Enabled: false
+
 Naming/PredicateName:
   Exclude:
     - app/graphql/**/*.rb
