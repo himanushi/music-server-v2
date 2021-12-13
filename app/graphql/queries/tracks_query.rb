@@ -2,9 +2,9 @@
 
 module Queries
   class TracksQuery < ::Queries::BaseListQuery
-    description 'アーティスト一覧取得'
+    description 'トラック一覧取得'
 
-    type [::Types::Objects::ArtistObject], null: true
+    type [::Types::Objects::TrackObject], null: true
 
     class TracksQueryOrderEnum < ::Types::Enums::BaseEnum
       value 'NEW', value: 'tracks.created_at', description: '追加順'

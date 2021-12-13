@@ -53,4 +53,8 @@ class User < ::ApplicationRecord
 
     role.allowed_actions.where(name: action_name).exists?
   end
+
+  def favorite
+    ::UserFavorite.new(id)
+  end
 end

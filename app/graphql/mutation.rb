@@ -8,6 +8,7 @@ class Mutation < ::Types::Objects::BaseObject
   field :change_password, mutation: ::Mutations::ChangePassword
   field :change_favorites, mutation: ::Mutations::ChangeFavorites
   field :add_album, mutation: ::Mutations::AddAlbum
+  field :update_album, mutation: ::Mutations::UpdateAlbum
   field :add_artist, mutation: ::Mutations::AddArtist
   field :change_artist_status, mutation: ::Mutations::ChangeArtistStatus
   field :change_album_status, mutation: ::Mutations::ChangeAlbumStatus

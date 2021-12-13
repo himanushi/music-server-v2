@@ -8,7 +8,6 @@ module Mutations
     argument :album_ids, [::String], required: false, description: 'お気に入り変更したいアルバムID'
     argument :track_ids, [::String], required: false, description: 'お気に入り変更したいトラックID'
     argument :playlist_ids, [::String], required: false, description: 'お気に入り変更したいプレイリストID'
-    argument :radio_ids, [::String], required: false, description: 'お気に入り変更したいラジオID'
     argument :favorite,
              ::GraphQL::Types::Boolean,
              required: true,
