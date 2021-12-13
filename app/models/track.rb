@@ -14,7 +14,16 @@ class Track < ::ApplicationRecord
 
   enum status: { pending: 0, active: 1, ignore: 2 }
 
-  delegate :apple_music_id, :apple_music_playable, :name, :artwork_m, :artwork_l, to: :service
+  delegate :disc_number,
+           :track_number,
+           :duration_ms,
+           :preview_url,
+           :apple_music_id,
+           :apple_music_playable,
+           :name,
+           :artwork_m,
+           :artwork_l,
+           to: :service
 
   def service() = apple_music_tracks.first
 

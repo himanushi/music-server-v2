@@ -5,7 +5,7 @@ module Types
     class TrackObject < ::Types::Objects::BaseObject
       description 'トラック'
 
-      field :id,             ::String, null: false, description: 'ID', method: :track_id
+      field :id,             ::String, null: false, description: 'ID'
       field :isrc,           ::String, null: false, description: '国際標準レコーディングコード'
       field :name,           ::String, null: false, description: 'タイトル'
       field :status,         ::Types::Enums::StatusEnum, null: false, description: 'ステータス'
