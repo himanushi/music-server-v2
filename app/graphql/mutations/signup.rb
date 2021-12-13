@@ -14,35 +14,35 @@ module Mutations
     def use_recaptcha?() = true
 
     def mutate(name:, username:, new_password:, new_password_confirmation:)
+      current_user = context[:current_info][:user]
+
       # 登録済みは正常終了
-      if context[:current_info][:user].registered
-        return {
-          current_user: context[:current_info][:user]
-        }
-      end
+      return { current_user: current_user } if current_user.registered
 
       unless new_password.present?
         raise(::GraphQL::ExecutionError.new('パスワードは必須です', extensions: { code: 'INVALID_VALUE', path: 'new_password' }))
       end
 
+      # 管理者のみロール変更なし
+      role = current_user.role.name == 'admin' ? ::Role.admin : ::Role.login
       attrs = {
         name: name,
         username: username,
         password: new_password,
         password_confirmation: new_password_confirmation,
         registered: true,
-        role: ::Role.login
+        role: role
       }
 
       # 設定したら全てのセッションを削除しセッション作成
       ::ActiveRecord::Base.transaction do
-        context[:current_info][:user].update!(attrs)
-        context[:current_info][:user].sessions.delete_all
-        context[:current_info][:session] = context[:current_info][:user].create_session
+        current_user.update!(attrs)
+        current_user.sessions.delete_all
+        context[:current_info][:session] = current_user.create_session
       end
 
       {
-        current_user: context[:current_info][:user]
+        current_user: current_user
       }
     end
   end
