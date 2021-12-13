@@ -19,12 +19,6 @@ module Types
       field :tracks,         [::Types::Objects::TrackObject], null: false, description: 'トラック'
       field :apple_music_id, ::String, null: false, description: 'Apple Music ID'
       field :apple_music_playable, ::GraphQL::Types::Boolean, null: false, description: 'iTunes 判定'
-
-      def apple_music_album() = object.apple_music_album
-
-      def tracks
-        apple_music_album&.apple_music_tracks&.order(disc_number: :asc, track_number: :asc)&.includes(:track)
-      end
     end
   end
 end
