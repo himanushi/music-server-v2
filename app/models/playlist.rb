@@ -116,4 +116,8 @@ class Playlist < ::ApplicationRecord
 
     self
   end
+
+  def to_url
+    "#{::ENV['PRODUCTION_APP_URL']}/playlist/#{id}"
+  end
 end

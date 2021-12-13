@@ -9,4 +9,6 @@ class Album
   def sync_tracks_status: -> untyped
   def force_ignore: -> untyped
   def update_services: -> ::Album
+  def to_url: -> ::String
+  def service: -> ::AppleMusicAlbum?
 end

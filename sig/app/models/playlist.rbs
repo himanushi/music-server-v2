@@ -16,4 +16,5 @@ class Playlist
   ) -> ::Playlist
 
   def add_items: (::Array[::String] track_ids) -> instance
+  def to_url: -> ::String
 end

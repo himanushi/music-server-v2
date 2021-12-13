@@ -25,6 +25,9 @@ Metrics/CyclomaticComplexity:
 Metrics/ParameterLists:
   Enabled: false
 
+Metrics/PerceivedComplexity:
+  Enabled: false
+
 Naming/PredicateName:
   Exclude:
     - app/graphql/**/*.rb

@@ -4,4 +4,7 @@
   post '/graphql', to: 'graphql#execute'
 
   mount ::GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
+
+  root 'pages#index'
+  get '/*path', to: 'pages#index', via: :all
 end

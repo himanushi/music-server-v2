@@ -31,11 +31,12 @@ target :app do
     openssl
     net-http
     uri
+    nokogiri
   ]
   library(*libs)
 
   # nil の場合は無視する
-  # hint = :hint
+  hint = :hint
   # info = :infomation
   # warn = :warning
   error = :error
@@ -64,7 +65,7 @@ target :app do
       steep::MethodParameterMismatch => error,
       steep::MethodReturnTypeAnnotationMismatch => error,
       steep::NoMethod => error,
-      steep::RequiredBlockMissing => error,
+      steep::RequiredBlockMissing => hint,
       steep::ReturnTypeMismatch => error,
       steep::SyntaxError => error,
       steep::UnexpectedBlockGiven => error,

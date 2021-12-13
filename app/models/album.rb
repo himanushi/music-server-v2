@@ -52,6 +52,10 @@ class Album < ::ApplicationRecord
     self
   end
 
+  def to_url
+    "#{::ENV['PRODUCTION_APP_URL']}/albums/#{id}"
+  end
+
   class << self
     def cache?(conditions:)
       cache = true

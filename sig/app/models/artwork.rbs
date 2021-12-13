@@ -2,4 +2,7 @@ class Artwork
   include ::ActiveModel::Model
   include ::ActiveModel::Attributes
   extend ::ActiveModel::Attributes::ClassMethods
+  def url: -> ::String
+  def width: -> ::Integer
+  def height: -> ::Integer
 end
