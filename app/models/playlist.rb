@@ -69,9 +69,8 @@ class Playlist < ::ApplicationRecord
     end
 
     def cache?(conditions:)
-      cache = true
-      cache = false if conditions.key?(:favorite)
-      cache
+      conditions.present?
+      false
     end
 
     def generate_relation(conditions:, context:)
