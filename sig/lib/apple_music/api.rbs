@@ -105,7 +105,7 @@ module AppleMusic
           "id" => ::String,
           "type" => 'artists',
           "href" => ::String,
-          "attributes" => artist_attributes
+          "attributes" => artist_attributes?
         }
 
       type artist =
@@ -113,7 +113,7 @@ module AppleMusic
           "id" => ::String,
           "type" => 'artists',
           "href" => ::String,
-          "attributes" => artist_attributes,
+          "attributes" => artist_attributes?,
           "relationships" => {
             "albums" => {
               "next" => ::String | nil,
