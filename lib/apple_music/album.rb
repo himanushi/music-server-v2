@@ -8,11 +8,9 @@ module AppleMusic
         return am_album unless !am_album || force
 
         full_album = build_json(apple_music_id)
-
         ::ActiveRecord::Base.transaction do
           prepare_create_artists(full_album)
         end
-
         ::ActiveRecord::Base.transaction do
           prepare_create_album_tracks(full_album)
 
@@ -65,11 +63,13 @@ module AppleMusic
         end
 
         # artists
-        artists_data.uniq.map do |artist_data|
-          artist = ::Artist.find_or_initialize_by(name: ::Convert.to_name(artist_data['attributes']['name']))
+        artists_data.uniq.each do |artist_data|
+          next unless (attributes = artist_data['attributes'])
+
+          artist = ::Artist.find_or_initialize_by(name: ::Convert.to_name(attributes['name']))
           ama = ::AppleMusicArtist.find_or_initialize_by(apple_music_id: artist_data['id'])
           ama.artist = artist
-          ama.name = artist_data['attributes']['name']
+          ama.name = attributes['name']
           ama.save!
         end
       end
@@ -84,8 +84,10 @@ module AppleMusic
         album.total_tracks = album_data['attributes']['trackCount']
 
         # album artists
-        album_data['relationships']['artists']['data'].map do |artist_data|
-          artist = ::Artist.find_by(name: ::Convert.to_name(artist_data['attributes']['name']))
+        album_data['relationships']['artists']['data'].each do |artist_data|
+          next unless (attributes = artist_data['attributes'])
+
+          artist = ::Artist.find_by(name: ::Convert.to_name(attributes['name']))
           album.artists = (album.artists.to_a + [artist]).compact.uniq
         end
 
@@ -96,8 +98,10 @@ module AppleMusic
             track.status = album.status
 
             # track artists
-            tracks_data['relationships']['artists']['data'].map do |artist_data|
-              artist = ::Artist.find_by(name: ::Convert.to_name(artist_data['attributes']['name']))
+            tracks_data['relationships']['artists']['data'].each do |artist_data|
+              next unless (attributes = artist_data['attributes'])
+
+              artist = ::Artist.find_by(name: ::Convert.to_name(attributes['name']))
               track.artists = (track.artists.to_a + [artist]).compact.uniq
             end
 
