@@ -29,7 +29,7 @@ module Queries
       argument :artist_ids, [::String], required: false, description: 'アーティストID'
       argument :track_ids,  [::String], required: false, description: 'トラックID'
       argument :name,       ::String, required: false, description: 'アルバム名(あいまい検索)'
-      argument :statuses,   [::Types::Enums::StatusEnum], required: false, description: '表示ステータス'
+      argument :status,     [::Types::Enums::StatusEnum], required: false, description: '表示ステータス'
       argument :favorite,   ::GraphQL::Types::Boolean, required: false, description: 'お気に入り'
     end
 

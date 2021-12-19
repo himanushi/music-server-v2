@@ -27,10 +27,10 @@ module Queries
 
     class ArtistsConditionsInputObject < ::Types::InputObjects::BaseInputObject
       argument :album_ids, [::String], required: false, description: 'アルバムID'
-      argument :track_ids,  [::String], required: false, description: 'トラックID'
-      argument :name,       ::String, required: false, description: 'アーティスト名(あいまい検索)'
-      argument :statuses,   [::Types::Enums::StatusEnum], required: false, description: '表示ステータス'
-      argument :favorite,   ::GraphQL::Types::Boolean, required: false, description: 'お気に入り'
+      argument :track_ids, [::String], required: false, description: 'トラックID'
+      argument :name,      ::String, required: false, description: 'アーティスト名(あいまい検索)'
+      argument :status,    [::Types::Enums::StatusEnum], required: false, description: '表示ステータス'
+      argument :favorite,  ::GraphQL::Types::Boolean, required: false, description: 'お気に入り'
     end
 
     argument :cursor,

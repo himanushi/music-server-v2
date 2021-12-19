@@ -26,7 +26,7 @@ module Queries
 
     class TracksConditionsInputObject < ::Types::InputObjects::BaseInputObject
       argument :name,     ::String, 'トラック名(あいまい検索)', required: false
-      argument :statuses, [::Types::Enums::StatusEnum], '表示ステータス', required: false
+      argument :status,   [::Types::Enums::StatusEnum], '表示ステータス', required: false
       argument :favorite, ::GraphQL::Types::Boolean, 'お気に入り', required: false
       argument :random,   ::GraphQL::Types::Boolean, 'ランダム取得', required: false
     end
