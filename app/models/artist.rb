@@ -49,7 +49,7 @@ class Artist < ::ApplicationRecord
         relation = relation.joins(:favorites).where(favorites: { user_id: context[:current_info][:user].id })
       end
 
-      relation
+      relation.where(conditions)
     end
 
     def all_pending_to_ignore

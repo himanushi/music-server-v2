@@ -53,7 +53,7 @@ class Track < ::ApplicationRecord
         relation = relation.joins(:favorites).where(favorites: { user_id: context[:current_info][:user].id })
       end
 
-      relation
+      relation.where(conditions)
     end
   end
 end
