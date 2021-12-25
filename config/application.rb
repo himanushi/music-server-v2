@@ -43,6 +43,10 @@ module MusicServer
     # CSRF 無効
     config.action_controller.allow_forgery_protection = false
 
+    config.after_initialize do
+      ::Dir[::Rails.root.join('config', 'after_initializers', '*.rb')].each { |file| load file }
+    end
+
     # Apollo Client 対応
     # https://mattboldt.com/2019/06/23/rails-graphql-react-apollo-part-two/
     config.middleware.insert_before(0, ::Rack::Cors) do
